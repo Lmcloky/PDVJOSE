@@ -24,6 +24,13 @@
             Agregar Saldo
 
           </button>
+
+            <button class="btn btn-danger" data-toggle="modal" data-target="#modalAgregarRetiro">
+
+              Retirar Saldo
+            </button>
+            
+      
           
         </div>
         <div class="box-body">
@@ -38,7 +45,6 @@
                   <th>Gastos De Hoy</th>
                   <!-- <th>Descripción</th> -->
                   <th>Saldo Disponible</th>
-                  <th>Acciones</th>
 
                 </tr>
               </thead>
@@ -64,12 +70,6 @@
                       <!-- <th>Descripcion</th> -->
                       <td>'.$value["saldo"].'</td>
                       
-                      <td>
-                        <div class="btn-group">
-                          <button class="btn btn-info btnAgregarRetiro" data-toggle="modal" data-target="#modalAgregarRetiro"><i class="fa fa-hand-lizard-o"></i></button>
-                          
-                        </div>
-                      </td>
 
                     </tr>';
                   }
@@ -144,8 +144,10 @@
 <!--=================================
  =          ###Modal Agregar Retiro ###            =
  ==================================-->
+ <!--=================================
+=     ###Modal Agregar Saldo###  =
+==================================-->
  
-
 <div id="modalAgregarRetiro" class="modal fade" role="dialog" >
   <div class="modal-dialog">
 
@@ -167,7 +169,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"> <i class="fa fa-usd"></i> </span>
-                  <input type="text" class="form-control input-lg" name="nuevaCantidad" placeholder="Ingresa La Cantidad" required>
+                  <input type="text" class="form-control input-lg" name="cantidad" placeholder="Ingresa La Cantidad" required>
                 </div>
               </div>
 
@@ -175,7 +177,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"> <i class="fa fa-file-text-o"></i> </span>
-                  <input type="text" class="form-control input-lg" name="nuevaDescripcion" placeholder="Ingresa la descripción" required="">
+                  <input type="text" class="form-control input-lg" name="descripcion" placeholder="Ingresa la descripción" required="">
                 </div>
               </div>
 

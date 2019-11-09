@@ -192,15 +192,15 @@ class ControladorCategorias{
 
 	static public function ctrCrearRetiro(){
 
-		if (isset($_POST["nuevaCantidad"])) {
+		if (isset($_POST["cantidad"])) {
 			
-			if (preg_match('/^[0-9]+$/', $_POST["nuevaCantidad"]) &&
-				preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevaDescripcion"])
+			if (preg_match('/^[0-9]+$/', $_POST["cantidad"]) &&
+				preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["descripcion"])
 			    ) { 
 					$tabla = "retiros";
 
-				   	$datos = array("retiro"=>$_POST["nuevaCantidad"],
-						           "descripcion"=>$_POST["nuevaDescripcion"]);
+				   	$datos = array("retiro"=>$_POST["cantidad"],
+						           "descripcion"=>$_POST["descripcion"]);
 
 				   	$respuesta = ModeloCategorias::mdlIngresarRetiro($tabla, $datos);
 

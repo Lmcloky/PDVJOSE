@@ -106,10 +106,10 @@ class ModeloCategorias{
 
 		static public function mdlIngresarRetiro($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(retiro, descripcion) VALUES (:retiro, :descripcion)");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(retiro, descripcion, fecha) VALUES (:retiro, :descripcion, now())");
 
 		$stmt->bindParam(":retiro", $datos["retiro"], PDO::PARAM_STR);
-		$stmt->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_INT);
+		$stmt->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
 
 		if($stmt->execute()){
 
