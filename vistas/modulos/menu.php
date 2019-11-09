@@ -38,6 +38,13 @@
 					<i class="fa fa-product-hunt"></i>
 					<span>Productos</span>
 				</a> 
+			</li>
+
+			<li>
+				<a href="reporte">
+					<i class="fa fa-usd"></i>
+					<span>Reporte Diario</span>
+				</a> 
 			</li>';
 
 		}

@@ -99,9 +99,9 @@ if($_SESSION["perfil"] == "Vendedor"){
   </div>
 
 
- <!--=================================
- =     ###Modal Agregar Categoria###  =
- ==================================-->
+<!--=================================
+=     ###Modal Agregar Categoria###  =
+==================================-->
  
 
 <div id="modalAgregarCategoria" class="modal fade" role="dialog" >

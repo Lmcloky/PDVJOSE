@@ -156,9 +156,9 @@
                                 <td style="width: 50%">
                                   <div class="input-group">
                                     
-                                    <input type="number" class="form-control input-lg" min="0" id="nuevoImpuestoVenta" placeholder="0" required>
-                                    <input type="hidden" name="nuevoPrecioImpuesto" id="nuevoPrecioImpuesto" required>
-                                    <input type="hidden" name="nuevoPrecioNeto" id="nuevoPrecioNeto" required>
+                                    <input type="number" class="form-control input-lg" min="0" value="0" id="nuevoImpuestoVenta" required>
+                                    <input type="hidden" name="nuevoPrecioImpuesto" id="nuevoPrecioImpuesto" value="0" required>
+                                    <input type="hidden" name="nuevoPrecioNeto" id="nuevoPrecioNeto" value="0" required>
                                     <span class="input-group-addon"><i class="fa fa-percent"></i></span>
 
                                   </div>

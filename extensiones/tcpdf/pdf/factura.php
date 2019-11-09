@@ -66,16 +66,15 @@ $bloque1 = <<<EOF
 		
 		<tr>
 
-			<td style="width:150px"><img src="images/logo-negro-bloque.png"></td>
+			<td style="width:80px"><img src="images/construrama.png"></td>
+
 
 			<td style="background-color:white; width:140px">
 				<div style="font-size:8.5px; text-align:right; line-height:15px;">
 
-					<br>
-					NIT: 71.759.963-9
 
 					<br>
-					Dirección: Calle 44B 92-11
+					Dirección: Santa Maria Pipioltepec, <br> entrada las Carmelitas, la cascada <br> valle de Bravo, Estado de México C.P. 51200
 
 				</div>
 			</td>
@@ -84,15 +83,15 @@ $bloque1 = <<<EOF
 				<div style="font-size:8.5px; text-align:right; line-height:15px;">
 
 					<br>
-					Teléfono: 722 2222 222
+					Teléfono: 01 726 110 12 14
 
 					<br>
-					FerreteriaAAA@gmail.com
+					Celular: 7221837283
 
 				</div>
 			</td>
 
-			<td style="background-color:white; width:110px; text-align:center; color:red"><br><br>FACTURA N.<br>$valorVenta</td>
+			<td style="background-color:white; width:110px; text-align:center; color:red"><br><br>NOTA N.<br>$valorVenta</td>
 
 		</tr>
 		

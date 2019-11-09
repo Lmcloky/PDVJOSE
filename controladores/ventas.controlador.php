@@ -125,15 +125,17 @@ class ControladorVentas{
 
 				$printer -> feed(1); //Alimentamos el papel 1 vez*/
 
-				$printer -> text("Punto de Venta, La Cascada"."\n");//Nombre de la empresa
+				$printer -> text("**FERREMATERIALES LA CASCADA**"."\n");//Nombre de la empresa
 
 				$printer -> text("NIT: 71.759.963-9"."\n");//Nit de la empresa
 
-				$printer -> text("Dirección: Calle 44B 92-11"."\n");//Dirección de la empresa
+				$printer -> text("SANTA MARIA PIPIOLTEPEC S/N, ENTRADA LAS"."\n");//Dirección de la empresa
+				$printer -> text("CARMELITAS, LA CASCADA VALLE DE BRAVO,"."\n");//Dirección de la empresa
+				$printer -> text("ESTADO DE MÉXICO C.P. 51200"."\n");//Dirección de la empresa
 
-				$printer -> text("Teléfono: 123 456 78 90"."\n");//Teléfono de la empresa
+				$printer -> text("Tel: 01 726 110 1214  Cel: 722 183 7283"."\n");//Teléfono de la empresa
 
-				$printer -> text("FACTURA N.".$_POST["nuevaVenta"]."\n");//Número de factura
+				$printer -> text("Ticket N.".$_POST["nuevaVenta"]."\n");//Número de factura
 
 				$printer -> feed(1); //Alimentamos el papel 1 vez*/
 
@@ -170,7 +172,7 @@ class ControladorVentas{
 				
 				$printer->text("NETO: $ ".number_format($_POST["nuevoPrecioNeto"],2)."\n"); //ahora va el neto
 
-				$printer->text("IMPUESTO: $ ".number_format($_POST["nuevoPrecioImpuesto"],2)."\n"); //ahora va el impuesto
+				$printer->text("IMPUESTO: Ya Agregado "."\n"); //ahora va el impuesto
 
 				$printer->text("--------\n");
 
@@ -184,7 +186,7 @@ class ControladorVentas{
 
 				$printer -> cut(); //Cortamos el papel, si la impresora tiene la opción
 
-				$printer -> pulse(); //Por medio de la impresora mandamos un pulso, es útil cuando hay cajón moneder
+				$printer -> pulse(); //Por medio de la impresora mandamos un pulso, es útil cuando hay cajón monedero
 
 				$printer -> close();
 
@@ -378,15 +380,17 @@ class ControladorVentas{
 
 				$printer -> feed(1); //Alimentamos el papel 1 vez*/
 
-				$printer -> text("Punto de Venta, La Cascada"."\n");//Nombre de la empresa
+				$printer -> text("**FERREMATERIALES LA CASCADA**"."\n");//Nombre de la empresa
 
 				$printer -> text("NIT: 71.759.963-9"."\n");//Nit de la empresa
 
-				$printer -> text("Dirección: Calle 44B 92-11"."\n");//Dirección de la empresa
+				$printer -> text("SANTA MARIA PIPIOLTEPEC S/N, ENTRADA LAS"."\n");//Dirección de la empresa
+				$printer -> text("CARMELITAS, LA CASCADA VALLE DE BRAVO,"."\n");//Dirección de la empresa
+				$printer -> text("ESTADO DE MÉXICO C.P. 51200"."\n");//Dirección de la empresa
 
-				$printer -> text("Teléfono: 123 456 78 90"."\n");//Teléfono de la empresa
+				$printer -> text("Tel: 01 726 110 1214  Cel: 722 183 7283"."\n");//Teléfono de la empresa
 
-				$printer -> text("FACTURA N.".$_POST["editarVenta"]."\n");//Número de factura
+				$printer -> text("Ticket N.".$_POST["editarVenta"]."\n");//Número de factura
 
 				$printer -> feed(1); //Alimentamos el papel 1 vez*/
 
@@ -423,7 +427,7 @@ class ControladorVentas{
 				
 				$printer->text("NETO: $ ".number_format($_POST["nuevoPrecioNeto"],2)."\n"); //ahora va el neto
 
-				$printer->text("IMPUESTO: $ ".number_format($_POST["nuevoPrecioImpuesto"],2)."\n"); //ahora va el impuesto
+				$printer->text("IMPUESTO: Ya Agregado "."\n"); //ahora va el impuesto
 
 				$printer->text("--------\n");
 
@@ -727,7 +731,7 @@ class ControladorVentas{
 	SUMA TOTAL VENTAS
 	=============================================*/
 
-	public function ctrSumaTotalVentas(){
+	static public function ctrSumaTotalVentas(){
 
 		$tabla = "ventas";
 
