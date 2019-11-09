@@ -146,5 +146,60 @@ class ModeloClientes{
 
 	}
 
+	
+
+	static public function mdlIngresarReporte($tabla, $datos){
+
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(saldo_inicial, ventas, retiros, gastos, saldo, fecha) VALUES (:saldo_inicial, 0, 0, 0, :saldo_inicial, now())");
+
+		$stmt->bindParam(":saldo_inicial", $datos, PDO::PARAM_STR);
+
+		if($stmt->execute()){
+
+			return "ok";
+
+		}else{
+
+			return "ok";
+		
+		}
+
+		$stmt->close();
+		$stmt = null;
+
+	}
+
+	/*=========================================================
+						MOSTRAR Reportes
+	=========================================================*/
+
+	static public function mdlMostrarReportes($tabla, $item, $valor){
+
+		if($item != null){
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
+
+			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+
+			$stmt -> execute();
+
+			return $stmt -> fetch();
+
+		}else{
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla where fecha = CURDATE()");
+
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}
+
+		$stmt -> close();
+
+		$stmt = null;
+
+	}
+
 }
 

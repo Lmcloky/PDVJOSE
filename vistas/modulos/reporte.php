@@ -44,25 +44,37 @@
               </thead>
               
               <tbody>
+                <?php 
 
-                    <tr>
+                $item = null;
+                $valor = null;
 
-                      <td>ID</td>
-                      <td>$ 850</td>
-                      <td>5</td>
-                      <td>2</td>
-                      <td>$ 320</td>
+                $reportes = ControladorClientes::ctrMostrarReportes($item, $valor);
+
+                foreach ($reportes as $key => $value) {
+            
+
+              echo '<tr>
+
+                      <td>'.$value["Id"].'</td>
+                      <td>'.$value["saldo_inicial"].'</td>
+                      <td>'.$value["ventas"].'</td>
+                      <td>'.$value["retiros"].'</td>
+                      <td>'.$value["gastos"].'</td>
                       <!-- <th>Descripcion</th> -->
-                      <td>$ 530</td>
+                      <td>'.$value["saldo"].'</td>
                       
                       <td>
                         <div class="btn-group">
-                          <button class="btn btn-info btnRetirarSaldo" data-toggle="modal" data-target="#modalRetirarSaldo"><i class="fa fa-hand-lizard-o"></i></button>
+                          <button class="btn btn-info btnAgregarRetiro" data-toggle="modal" data-target="#modalAgregarRetiro"><i class="fa fa-hand-lizard-o"></i></button>
                           
                         </div>
                       </td>
 
-                    </tr>
+                    </tr>';
+                  }
+
+                ?>
 
                 
               </tbody>
@@ -79,7 +91,6 @@
 =     ###Modal Agregar Saldo###  =
 ==================================-->
  
-
 <div id="modalAgregarSaldo" class="modal fade" role="dialog" >
   <div class="modal-dialog">
 
@@ -100,7 +111,7 @@
               <!-- Entrada para el saldo -->
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-th"></i> </span>
+                  <span class="input-group-addon"> <i class="fa fa-usd"></i> </span>
                   <input type="text" class="form-control input-lg" name="nuevaCantidad" placeholder="Ingresa La Cantidad" required>
                 </div>
               </div>
@@ -116,18 +127,26 @@
           <button type="submit" class="btn btn-primary">Guardar Saldo</button>
         </div>
 
+        <?php 
+
+          $crearReporte = new ControladorClientes();
+          $crearReporte -> ctrCrearReporte();
+
+         ?>
+
       </form>
     </div>
     
   </div>
 </div>
 
+
 <!--=================================
- =          ###Modal Retirar Saldo ###            =
+ =          ###Modal Agregar Retiro ###            =
  ==================================-->
  
 
-<div id="modalRetirarSaldo" class="modal fade" role="dialog" >
+<div id="modalAgregarRetiro" class="modal fade" role="dialog" >
   <div class="modal-dialog">
 
     <div class="modal-content">
@@ -144,28 +163,42 @@
 
           <div class="box-body">
               
-              <!-- Entrada para el retiro -->
+              <!-- Entrada para el saldo -->
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"> <i class="fa fa-usd"></i> </span>
-                  <input type="text" class="form-control input-lg" id="editarReporte" name="editarReporte" required="">
-                  <input type="hidden" id="idReporte" name="idreporte" required="">
+                  <input type="text" class="form-control input-lg" name="nuevaCantidad" placeholder="Ingresa La Cantidad" required>
                 </div>
               </div>
 
+              <!-- Entrada para la descripcion -->
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"> <i class="fa fa-file-text-o"></i> </span>
+                  <input type="text" class="form-control input-lg" name="nuevaDescripcion" placeholder="Ingresa la descripción" required="">
+                </div>
+              </div>
 
           </div>
 
         </div>
+
         <div class="modal-footer">
 
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
 
-          <button type="submit" class="btn btn-primary"> Retirar</button>
+          <button type="submit" class="btn btn-primary">Retirar Saldo</button>
         </div>
-        
+
+        <?php 
+
+          $crearRetiro = new ControladorCategorias();
+          $crearRetiro -> ctrCrearRetiro();
+
+         ?>
 
       </form>
     </div>
+    
   </div>
 </div>

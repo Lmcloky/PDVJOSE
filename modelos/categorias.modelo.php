@@ -103,4 +103,26 @@ class ModeloCategorias{
 		$stmt = null;
 
 	}
+
+		static public function mdlIngresarRetiro($tabla, $datos){
+
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(retiro, descripcion) VALUES (:retiro, :descripcion)");
+
+		$stmt->bindParam(":retiro", $datos["retiro"], PDO::PARAM_STR);
+		$stmt->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_INT);
+
+		if($stmt->execute()){
+
+			return "ok";
+
+		}else{
+
+			return "error";
+		
+		}
+
+		$stmt->close();
+		$stmt = null;
+
+	}
 }

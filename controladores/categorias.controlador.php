@@ -189,4 +189,62 @@ class ControladorCategorias{
 		}
 
 	}
+
+	static public function ctrCrearRetiro(){
+
+		if (isset($_POST["nuevaCantidad"])) {
+			
+			if (preg_match('/^[0-9]+$/', $_POST["nuevaCantidad"]) &&
+				preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevaDescripcion"])
+			    ) { 
+					$tabla = "retiros";
+
+				   	$datos = array("retiro"=>$_POST["nuevaCantidad"],
+						           "descripcion"=>$_POST["nuevaDescripcion"]);
+
+				   	$respuesta = ModeloCategorias::mdlIngresarRetiro($tabla, $datos);
+
+				   	if($respuesta == "ok"){
+
+						echo'<script>
+
+						swal({
+							  type: "success",
+							  title: "La transacción se ha realizado correctamente",
+							  showConfirmButton: true,
+							  confirmButtonText: "Cerrar"
+							  }).then(function(result){
+										if (result.value) {
+
+										window.location = "reporte";
+
+										}
+									})
+
+						</script>';
+
+					}
+				
+			}else{
+
+				echo'<script>
+
+					swal({
+						  type: "error",
+						  title: "¡El campo no puede ir vacío o llevar caracteres especiales!",
+						  showConfirmButton: true,
+						  confirmButtonText: "Cerrar"
+						  }).then(function(result){
+							if (result.value) {
+
+							window.location = "reporte";
+
+							}
+						})
+
+			  	</script>';
+
+			}
+		}
+	}
 }
