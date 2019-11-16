@@ -247,4 +247,37 @@ class ControladorCategorias{
 			}
 		}
 	}
+
+	static public function ctrMostrarRetiros($item, $valor){
+
+		$tabla = "retiros";
+		$respuesta = ModeloCategorias::mdlMostrarRetiros($tabla, $item, $valor);
+
+		return $respuesta;
+	}
+
+	static public function ctrMostrarVentasCanceladas($item, $valor){
+
+		$tabla = "ventas_eliminadas";
+		$respuesta = ModeloCategorias::mdlMostrarVentasCanceladas($tabla, $item, $valor);
+
+		return $respuesta;
+	}
+
+	static public function ctrMostrarVentasEditadas($item, $valor){
+
+		$tabla = "ventas_editadas";
+		$respuesta = ModeloCategorias::mdlMostrarVentasEditadas($tabla, $item, $valor);
+
+		return $respuesta;
+	}
+
+	static public function ctrMostrarVentasHoy($item, $valor){
+
+		$tabla = "ventas";
+		$respuesta = ModeloCategorias::mdlMostrarVentasHoy($tabla, $item, $valor);
+
+		return $respuesta;
+	}
+
 }

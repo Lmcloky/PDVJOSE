@@ -1,6 +1,6 @@
 <?php 
 
-class ControladorReportes{
+class ControladorReporte{
 
 	/*========================================
 	=            Crear Reportes            =
@@ -17,7 +17,7 @@ class ControladorReportes{
 
 				   	$datos = $_POST["nuevaCantidad"];
 
-				   	$respuesta = ModeloReportes::mdlIngresarReporte($tabla, $datos);
+				   	$respuesta = ModeloReporte::mdlIngresarReporte($tabla, $datos);
 
 				   	if($respuesta == "ok"){
 
@@ -63,12 +63,12 @@ class ControladorReportes{
 		}
 	}
 	/*========================================================
-	=            CREAR A LOS CLIENTES BLA BLA BLA            =
+	=            CREAR A LOS CLIENTES BLA BLA  BLA           =
 	========================================================*/
-	static public function ctrMostrarReportes($item, $valor){
+	static public function ctrMostrarReporte($item, $valor){
 
 		$tabla = "reportes";
-		$respuesta = ModeloReportes::mdlMostrarReportes($tabla, $item, $valor);
+		$respuesta = ModeloReporte::mdlMostrarReporte($tabla, $item, $valor);
 
 		return $respuesta;
 	}

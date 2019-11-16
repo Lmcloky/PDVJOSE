@@ -219,6 +219,7 @@ $(".tablaProductos tbody").on("click", "button.btnEditarProducto", function(){
 			$("#editarCodigo").val(respuesta["codigo"]);
 			$("#editarDescripcion").val(respuesta["descripcion"]);
 			$("#editarStock").val(respuesta["stock"]);
+			$("#editarStockMinimo").val(respuesta["stock_minimo"]);
 			$("#editarPrecioCompra").val(respuesta["precio_compra"]);
 			$("#editarPrecioVenta").val(respuesta["precio_venta"]);
 

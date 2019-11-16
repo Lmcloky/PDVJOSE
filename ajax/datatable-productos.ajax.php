@@ -44,13 +44,9 @@ class TablaProductos{
 			=            STOCK                 =
 			=====================================================*/
 
-			if ($productos[$i]["stock"] <= 10) {
+			if ($productos[$i]["stock"] <= $productos[$i]["stock_minimo"]) {
 				
 				$stock = "<button class='btn btn-danger'>".$productos[$i]["stock"]."</button>";
-
-			}else if ($productos[$i]["stock"] > 10 && $productos[$i]["stock"] <= 15) {
-				
-				$stock = "<button class='btn btn-warning'>".$productos[$i]["stock"]."</button>";
 
 			}else{
 
@@ -75,7 +71,7 @@ class TablaProductos{
 
 
 		  	$datosJson .='[
-			      "'.($i+1).'",
+			      "'.$productos[$i]["id"].'",
 			      "'.$imagen.'",
 			      "'.$productos[$i]["codigo"].'",
 			      "'.$productos[$i]["descripcion"].'",

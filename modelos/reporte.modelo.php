@@ -2,7 +2,7 @@
 
 require_once "conexion.php";
 
-class ModeloReportes{
+class ModeloReporte{
 
 	/*=======================================
 	=            Crear Reportes            =
@@ -33,7 +33,7 @@ class ModeloReportes{
 						MOSTRAR Reportes
 	=========================================================*/
 
-	static public function mdlMostrarReportes($tabla, $item, $valor){
+	static public function mdlMostrarReporte($tabla, $item, $valor){
 
 		if($item != null){
 

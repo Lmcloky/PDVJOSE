@@ -48,7 +48,6 @@
                   =            ENTRADA DEl CODIGO DE VENTA            =
                   ===========================================-->
                   
-                  
                   <div class="form-group">
                     
                     <div class="input-group">

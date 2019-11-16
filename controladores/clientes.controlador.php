@@ -233,7 +233,7 @@ class ControladorClientes{
 
 					swal({
 						  type: "error",
-						  title: "¡El campo no puede ir vacío o llevar caracteres especiales!",
+						  title: "¡El campo no puede ir vacío o llevar caracteres especiales o letras!",
 						  showConfirmButton: true,
 						  confirmButtonText: "Cerrar"
 						  }).then(function(result){

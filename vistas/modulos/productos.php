@@ -159,6 +159,15 @@ MODAL AGREGAR PRODUCTO
               </div>
             </div>
 
+            <!-- ENTRADA PARA STOCK -->
+
+             <div class="form-group">              
+              <div class="input-group">              
+                <span class="input-group-addon"><i class="fa fa-check"></i></span> 
+                <input type="number" class="form-control input-lg" name="nuevoStockMinimo" min="0" placeholder="StockMinimo" required>
+              </div>
+            </div>
+
              <!-- ENTRADA PARA PRECIO COMPRA -->
 
              <div class="form-group row">
@@ -194,7 +203,7 @@ MODAL AGREGAR PRODUCTO
 
                   <div class="col-xs-6" style="padding:0">                    
                     <div class="input-group">                      
-                      <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="40" required>
+                      <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="15" required>
                       <span class="input-group-addon"><i class="fa fa-percent"></i></span>
                     </div>
                   </div>
@@ -286,7 +295,15 @@ MODAL AGREGAR PRODUCTO
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"> <i class="fa fa-check"></i> </span>
-                  <input type="number" class="form-control input-lg" name="editarStock" name="editarStock" min="0" required="">
+                  <input type="number" class="form-control input-lg" id="editarStock" name="editarStock" min="0" required="">
+                </div>
+              </div>
+
+              <!-- Entrada para el Stock -->
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"> <i class="fa fa-check"></i> </span>
+                  <input type="number" class="form-control input-lg" id="editarStockMinimo" name="editarStockMinimo" min="0" required="">
                 </div>
               </div>
 
@@ -317,7 +334,7 @@ MODAL AGREGAR PRODUCTO
                   <!-- ENTRADA PARA PORCENTAJE -->
                   <div class="col-xs-6" style="padding: 0">
                     <div class="input-group">
-                      <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="40" required>
+                      <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="15" required>
                       <span class="input-group-addon"><i class="fa fa-percent"></i></span>
                     </div>
                   </div>

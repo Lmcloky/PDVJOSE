@@ -150,7 +150,7 @@ class ModeloClientes{
 
 	static public function mdlIngresarReporte($tabla, $datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(saldo_inicial, ventas, retiros, gastos, saldo, fecha) VALUES (:saldo_inicial, 0, 0, 0, :saldo_inicial, now())");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(saldo_inicial, ventas, dinero, retiros, gastos, saldo, fecha) VALUES (:saldo_inicial, 0, 0, 0, 0, :saldo_inicial, now())");
 
 		$stmt->bindParam(":saldo_inicial", $datos, PDO::PARAM_STR);
 
@@ -160,7 +160,7 @@ class ModeloClientes{
 
 		}else{
 
-			return "ok";
+			return "else";
 		
 		}
 

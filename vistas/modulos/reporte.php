@@ -29,18 +29,24 @@
 
               Retirar Saldo
             </button>
-            
-      
-          
         </div>
+
+
         <div class="box-body">
-            
-            <table class="table table-bordered table-striped dt-responsive tablas">
+          <div class="row">
+            <div class="col-md-12 col-xs-12">
+
+              <div class="box-header with-border">  
+                  <h3 class="box-title"> Reporte Del Día </h3>
+                </div>
+              
+              <table class="table table-bordered table-striped dt-responsive ">
               <thead>
                 <tr>
                   <th style="width: 10px;">#</th>
                   <th>Saldo Inicial</th>
                   <th>Total de Ventas</th>
+                  <th>Ventas</th>
                   <th>Total de retiros</th>
                   <th>Gastos De Hoy</th>
                   <!-- <th>Descripción</th> -->
@@ -63,12 +69,14 @@
               echo '<tr>
 
                       <td>'.$value["Id"].'</td>
-                      <td>'.$value["saldo_inicial"].'</td>
+                      <td>$ '.number_format($value["saldo_inicial"],2).'</td>
                       <td>'.$value["ventas"].'</td>
+                      <td>$ '.number_format($value["dinero"],2).'</td>
                       <td>'.$value["retiros"].'</td>
-                      <td>'.$value["gastos"].'</td>
+                      <td>$ '.number_format($value["gastos"],2).'</td>
                       <!-- <th>Descripcion</th> -->
-                      <td>'.$value["saldo"].'</td>
+                      <td>$ '.number_format($value["saldo"],2).'</td>
+
                       
 
                     </tr>';
@@ -79,8 +87,200 @@
                 
               </tbody>
             </table>
+              
+            </div>
+
+            <div class="col-md-2 col-xs-12">
+
+                <div class="box-header with-border">  
+                  <h3 class="box-title"> Retiros </h3>
+                </div>
+              
+                  <table class="table table-bordered table-striped dt-responsive">
+                    <thead>
+                      <tr>
+                        <th style="width: 10px;">#</th>
+                        <th>Cantidad</th>
+                        <th>Razón del Retiro</th>
+                      </tr>
+                    </thead>
+                    
+                    <tbody>
+                      
+                      <?php 
+
+                      $item = null;
+                      $valor = null;
+
+                      $reportes = ControladorCategorias::ctrMostrarRetiros($item, $valor);
+
+                      foreach ($reportes as $key => $value) {
+                  
+
+                    echo '<tr>
+
+                            <td>'.$value["Id"].'</td>
+                            <td>$ '.number_format($value["retiro"],2).'</td>
+                            <td>'.$value["descripcion"].'</td>
+              
+                          </tr>';
+                        }
+
+                      ?>
+                      
+                    </tbody>
+                  </table>
+                
+              </div>
+
+              <div class="col-md-1">
+                
+              </div>
+              <div class="col-md-2 col-xs-12">
+
+                <div class="box-header with-border">  
+                  <h3 class="box-title"> Ventas Realizadas </h3>
+                </div>
+              
+                  <table class="table table-bordered table-striped dt-responsive">
+                    <thead>
+                      <tr>
+                        <th style="width: 10px;">#</th>
+                        <th>N° De Nota</th>
+                        <th>Cantidad</th>
+                      </tr>
+                    </thead>
+                    
+                    <tbody>
+                      
+                      <?php 
+
+                      $item = null;
+                      $valor = null;
+
+                      $reportes = ControladorCategorias::ctrMostrarVentasHoy($item, $valor);
+
+                      foreach ($reportes as $key => $value) {
+                  
+
+                    echo '<tr>
+
+                            <td>'.$value["id"].'</td>
+                            <td>'.$value["codigo"].'</td>
+                            <td>$ '.number_format($value["total"],2).'</td>
+                            
+              
+                          </tr>';
+                        }
+
+                      ?>
+                      
+                    </tbody>
+                  </table>
+                
+              </div>
+
+              <div class="col-md-1">
+                
+              </div>
+
+              <div class="col-md-2 col-xs-12">
+
+                <div class="box-header with-border">  
+                  <h3 class="box-title"> Ventas Canceladas </h3>
+                </div>
+              
+                  <table class="table table-bordered table-striped dt-responsive">
+                    <thead>
+                      <tr>
+                        <th style="width: 10px;">#</th>
+                        <th>N° de Nota</th>
+                        <th>Cantidad</th>
+                      </tr>
+                    </thead>
+                    
+                    <tbody>
+                      
+                      <?php 
+
+                      $item = null;
+                      $valor = null;
+
+                      $reportes = ControladorCategorias::ctrMostrarVentasCanceladas($item, $valor);
+
+                      foreach ($reportes as $key => $value) {
+                  
+
+                    echo '<tr>
+
+                            <td>'.$value["id"].'</td>
+                            <td>'.$value["codigo"].'</td>
+                            <td>$ '.number_format($value["total"],2).'</td>
+                            
+                          </tr>';
+                        }
+
+                      ?>
+                      
+                    </tbody>
+                  </table>
+                
+              </div>
+              <div class="col-md-1">
+                
+              </div>
+
+              <div class="col-md-3 col-xs-12">
+
+                <div class="box-header with-border">  
+                  <h3 class="box-title"> Ventas Editadas </h3>
+                </div>
+              
+                  <table class="table table-bordered table-striped dt-responsive">
+                    <thead>
+                      <tr>
+                        <th style="width: 10px;">#</th>
+                        <th>N° de Nota</th>
+                        <th>Pago Anterior</th>
+                        <th>Pago Actual</th>
+                      </tr>
+                    </thead>
+                    
+                    <tbody>
+                      
+                      <?php 
+
+                      $item = null;
+                      $valor = null;
+
+                      $reportes = ControladorCategorias::ctrMostrarVentasEditadas($item, $valor);
+
+                      foreach ($reportes as $key => $value) {
+                  
+                    echo '<tr>
+
+                            <td>'.$value["id"].'</td>
+                            <td>'.$value["codigo"].'</td>
+                            <td>$ '.number_format($value["total_viejo"],2).'</td>
+                            <td>$ '.number_format($value["total_nuevo"],2).'</td>
+              
+                          </tr>';
+                        }
+
+                      ?>
+                      
+                    </tbody>
+                  </table>
+              </div>
+            
+
+          </div>
+            
+            
           
-        </div>
+        </div> <br>
+
+        
 
       </div>
 
@@ -144,9 +344,7 @@
 <!--=================================
  =          ###Modal Agregar Retiro ###            =
  ==================================-->
- <!--=================================
-=     ###Modal Agregar Saldo###  =
-==================================-->
+ 
  
 <div id="modalAgregarRetiro" class="modal fade" role="dialog" >
   <div class="modal-dialog">
