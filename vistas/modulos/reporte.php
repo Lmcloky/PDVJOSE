@@ -101,7 +101,7 @@
                       <tr>
                         <th style="width: 10px;">#</th>
                         <th>Cantidad</th>
-                        <th>Razón del Retiro</th>
+                        <th>Razón</th>
                       </tr>
                     </thead>
                     

@@ -154,8 +154,8 @@ MODAL AGREGAR PRODUCTO
 
              <div class="form-group">              
               <div class="input-group">              
-                <span class="input-group-addon"><i class="fa fa-check"></i></span> 
-                <input type="number" class="form-control input-lg" name="nuevoStock" min="0" placeholder="Stock" required>
+                <span class="input-group-addon"><i class="fa fa-chevron-circle-up"></i></span> 
+                <input type="number" class="form-control input-lg" name="nuevoStock" step="0.001" min="0" placeholder="Stock" required>
               </div>
             </div>
 
@@ -163,7 +163,7 @@ MODAL AGREGAR PRODUCTO
 
              <div class="form-group">              
               <div class="input-group">              
-                <span class="input-group-addon"><i class="fa fa-check"></i></span> 
+                <span class="input-group-addon"><i class="fa fa-chevron-down"></i></span> 
                 <input type="number" class="form-control input-lg" name="nuevoStockMinimo" min="0" placeholder="StockMinimo" required>
               </div>
             </div>
@@ -294,15 +294,15 @@ MODAL AGREGAR PRODUCTO
               <!-- Entrada para el Stock -->
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-check"></i> </span>
-                  <input type="number" class="form-control input-lg" id="editarStock" name="editarStock" min="0" required="">
+                  <span class="input-group-addon"> <i class="fa fa-chevron-circle-up"></i> </span>
+                  <input type="number" class="form-control input-lg" id="editarStock" name="editarStock" step="0.001" min="0" required="">
                 </div>
               </div>
 
               <!-- Entrada para el Stock -->
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-check"></i> </span>
+                  <span class="input-group-addon"> <i class="fa fa-chevron-down"></i> </span>
                   <input type="number" class="form-control input-lg" id="editarStockMinimo" name="editarStockMinimo" min="0" required="">
                 </div>
               </div>

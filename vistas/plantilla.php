@@ -11,7 +11,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 
-  <title>Punto De Venta | Ejemplo</title>
+  <title>Ferremateriales La Cascada</title>
 
   <!--=====================================
   =            Plugins Css                =

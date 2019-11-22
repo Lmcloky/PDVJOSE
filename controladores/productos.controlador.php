@@ -22,9 +22,9 @@ class ControladorProductos{
 		static public function ctrCrearProducto(){
 
 			if (isset($_POST["nuevaDescripcion"])) {
-				if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevaDescripcion"]) && 
-					preg_match('/^[0-9]+$/', $_POST["nuevoStock"]) && 
-					preg_match('/^[0-9]+$/', $_POST["nuevoStockMinimo"]) && 
+				if (preg_match('/^[()\a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevaDescripcion"]) && 
+					preg_match('/^[0-9.]+$/', $_POST["nuevoStock"]) && 
+					preg_match('/^[0-9.]+$/', $_POST["nuevoStockMinimo"]) && 
 					preg_match('/^[0-9.]+$/', $_POST["nuevoPrecioCompra"]) && 
 					preg_match('/^[0-9.]+$/', $_POST["nuevoPrecioVenta"])){
 
@@ -53,7 +53,7 @@ class ControladorProductos{
 
 							// Guardamos la imagen
 							$aleatorio = mt_rand(100,999);
-							$ruta = "vistas/img/productos/".$_POST["nuevaDescripcion"]."/".$aleatorio.".jpg";
+							$ruta = "vistas/img/productos/".$_POST["nuevoCodigo"]."/".$aleatorio.".jpg";
 							$origen = imagecreatefromjpeg($_FILES["nuevaImagen"]["tmp_name"]);
 							$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 
@@ -67,8 +67,8 @@ class ControladorProductos{
 
 							// Guardamos la imagen
 							$aleatorio = mt_rand(100,999);
-							$ruta = "vistas/img/productos/".$_POST["nuevaDescripcion"]."/".$aleatorio.".png";
-							$origen = imagecreatefrompng($_FILES["nuevaImagen"]["tmp_name"]);
+							$ruta = "vistas/img/productos/".$_POST["nuevoCodigo"]."/".$aleatorio.".png";
+							$origen = imagecreatefrompng($_FILES["nuevoCodigo"]["tmp_name"]);
 							$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 
 							imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
@@ -148,9 +148,9 @@ class ControladorProductos{
 		static public function ctrEditarProducto(){
 
 			if (isset($_POST["editarDescripcion"])) {
-				if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarDescripcion"]) && 
-					preg_match('/^[0-9]+$/', $_POST["editarStock"]) && 
-					preg_match('/^[0-9]+$/', $_POST["editarStockMinimo"]) && 
+				if (preg_match('/^[()\a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarDescripcion"]) && 
+					preg_match('/^[0-9.]+$/', $_POST["editarStock"]) && 
+					preg_match('/^[0-9.]+$/', $_POST["editarStockMinimo"]) && 
 					preg_match('/^[0-9.]+$/', $_POST["editarPrecioCompra"]) && 
 					preg_match('/^[0-9.]+$/', $_POST["editarPrecioVenta"])){
 
@@ -170,7 +170,7 @@ class ControladorProductos{
 						=     Directorio para guardar la imagen            =
 						=========================================================*/
 						
-						$directorio = "vistas/img/productos/".$_POST["editarDescripcion"];
+						$directorio = "vistas/img/productos/".$_POST["nuevoCodigo"];
 
 						/*=========================================================
 						=        Preguntar si existe imagen en la bd             =
@@ -191,7 +191,7 @@ class ControladorProductos{
 
 							// Guardamos la imagen
 							$aleatorio = mt_rand(100,999);
-							$ruta = "vistas/img/productos/".$_POST["editarDescripcion"]."/".$aleatorio.".jpg";
+							$ruta = "vistas/img/productos/".$_POST["editarCodigo"]."/".$aleatorio.".jpg";
 							$origen = imagecreatefromjpeg($_FILES["editarImagen"]["tmp_name"]);
 							$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 
@@ -205,7 +205,7 @@ class ControladorProductos{
 
 							// Guardamos la imagen
 							$aleatorio = mt_rand(100,999);
-							$ruta = "vistas/img/productos/".$_POST["editarDescripcion"]."/".$aleatorio.".png";
+							$ruta = "vistas/img/productos/".$_POST["editarCodigo"]."/".$aleatorio.".png";
 							$origen = imagecreatefrompng($_FILES["editarImagen"]["tmp_name"]);
 							$destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
 

@@ -94,7 +94,7 @@
                     </div>
                     <!-- CANTIDAD DEL PRODUCTO -->
                     <div class="col-xs-3">
-                      <input type="number" class="form-control" min="1" id="nuevaCantidadProducto" name="nuevaCantidadProducto" placeholder="0" readonly required="">                      
+                      <input type="number" class="form-control" id="nuevaCantidadProducto" name="nuevaCantidadProducto" step="0.001" placeholder="0" readonly required="">                      
                     </div>
                     <!-- PRECIO DEL PRODUCTO -->
                     <div class="col-xs-3" style="padding-left: 0px;">                      

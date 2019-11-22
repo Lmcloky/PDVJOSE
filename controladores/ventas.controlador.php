@@ -127,8 +127,6 @@ class ControladorVentas{
 
 				$printer -> text("**FERREMATERIALES LA CASCADA**"."\n");//Nombre de la empresa
 
-				$printer -> text("NIT: 71.759.963-9"."\n");//Nit de la empresa
-
 				$printer -> text("SANTA MARIA PIPIOLTEPEC S/N, ENTRADA LAS"."\n");//Dirección de la empresa
 				$printer -> text("CARMELITAS, LA CASCADA VALLE DE BRAVO,"."\n");//Dirección de la empresa
 				$printer -> text("ESTADO DE MÉXICO C.P. 51200"."\n");//Dirección de la empresa
@@ -381,8 +379,6 @@ class ControladorVentas{
 				$printer -> feed(1); //Alimentamos el papel 1 vez*/
 
 				$printer -> text("**FERREMATERIALES LA CASCADA**"."\n");//Nombre de la empresa
-
-				$printer -> text("NIT: 71.759.963-9"."\n");//Nit de la empresa
 
 				$printer -> text("SANTA MARIA PIPIOLTEPEC S/N, ENTRADA LAS"."\n");//Dirección de la empresa
 				$printer -> text("CARMELITAS, LA CASCADA VALLE DE BRAVO,"."\n");//Dirección de la empresa

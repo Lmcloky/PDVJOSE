@@ -42,8 +42,8 @@ class ModeloProductos{
 		$stmt->bindParam(":codigo", $datos["codigo"], PDO::PARAM_STR);
 		$stmt->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
 		$stmt->bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR);
-		$stmt->bindParam(":stock", $datos["stock"], PDO::PARAM_INT);
-		$stmt->bindParam(":stock_minimo", $datos["stock_minimo"], PDO::PARAM_INT);
+		$stmt->bindParam(":stock", $datos["stock"], PDO::PARAM_STR);
+		$stmt->bindParam(":stock_minimo", $datos["stock_minimo"], PDO::PARAM_STR);
 		$stmt->bindParam(":precio_compra", $datos["precio_compra"], PDO::PARAM_STR);
 		$stmt->bindParam(":precio_venta", $datos["precio_venta"], PDO::PARAM_STR);
 
@@ -74,8 +74,8 @@ class ModeloProductos{
 		$stmt->bindParam(":codigo", $datos["codigo"], PDO::PARAM_STR);
 		$stmt->bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
 		$stmt->bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR);
-		$stmt->bindParam(":stock", $datos["stock"], PDO::PARAM_INT);
-		$stmt->bindParam(":stock_minimo", $datos["stock_minimo"], PDO::PARAM_INT);
+		$stmt->bindParam(":stock", $datos["stock"], PDO::PARAM_STR);
+		$stmt->bindParam(":stock_minimo", $datos["stock_minimo"], PDO::PARAM_STR);
 		$stmt->bindParam(":precio_compra", $datos["precio_compra"], PDO::PARAM_STR);
 		$stmt->bindParam(":precio_venta", $datos["precio_venta"], PDO::PARAM_STR);
 
