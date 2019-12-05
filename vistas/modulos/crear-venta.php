@@ -102,9 +102,9 @@
                           $item = null;
                           $valor = null;
 
-                          $categorias = ControladorClientes::ctrMostrarClientes($item, $valor);
+                          $clientes = ControladorClientes::ctrMostrarClientes($item, $valor);
 
-                           foreach ($categorias as $key => $value) {
+                           foreach ($clientes as $key => $value) {
 
                              echo '<option value="'.$value["id"].'">'.$value["nombre"].'</option>';
 

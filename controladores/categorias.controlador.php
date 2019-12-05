@@ -190,11 +190,68 @@ class ControladorCategorias{
 
 	}
 
+		static public function ctrCrearCambio(){
+
+		if (isset($_POST["cantidadSaldo"])) {
+			
+			if (preg_match('/^[0-9. ]+$/', $_POST["cantidadSaldo"])) { 
+
+					$tabla = "cambio";
+
+				   	$datos = $_POST["cantidadSaldo"];
+
+				   	$respuesta = ModeloCategorias::mdlIngresarCambio($tabla, $datos);
+
+				   	if($respuesta == "ok"){
+
+						echo'<script>
+
+						swal({
+							  type: "success",
+							  title: "El Cambio a sido agregado correctamente",
+							  showConfirmButton: true,
+							  confirmButtonText: "Cerrar"
+							  }).then(function(result){
+										if (result.value) {
+
+										window.location = "reporte";
+
+										}
+									})
+
+						</script>';
+
+					}
+				
+			}else{
+
+				echo'<script>
+
+					swal({
+						  type: "error",
+						  title: "¡El campo no puede ir vacío o llevar caracteres especiales o letras!",
+						  showConfirmButton: true,
+						  confirmButtonText: "Cerrar"
+						  }).then(function(result){
+							if (result.value) {
+
+							window.location = "reporte";
+
+							}
+						})
+
+			  	</script>';
+
+			}
+		}
+	}
+
+
 	static public function ctrCrearRetiro(){
 
 		if (isset($_POST["cantidad"])) {
 			
-			if (preg_match('/^[0-9]+$/', $_POST["cantidad"]) &&
+			if (preg_match('/^[0-9.]+$/', $_POST["cantidad"]) &&
 				preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["descripcion"])
 			    ) { 
 					$tabla = "retiros";
@@ -246,6 +303,15 @@ class ControladorCategorias{
 
 			}
 		}
+	}
+
+
+	static public function ctrMostrarCambio($item, $valor){
+
+	$tabla = "cambio";
+	$respuesta = ModeloCategorias::mdlMostrarCambio($tabla, $item, $valor);
+
+	return $respuesta;
 	}
 
 	static public function ctrMostrarRetiros($item, $valor){

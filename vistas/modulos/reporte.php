@@ -21,7 +21,13 @@
           
           <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarSaldo">
             
-            Agregar Saldo
+            Agregar Saldo Inicial
+
+          </button>
+
+          <button class="btn btn-success" data-toggle="modal" data-target="#modalAgregarCambio">
+            
+            Agregar Cambio
 
           </button>
 
@@ -93,6 +99,48 @@
             <div class="col-md-2 col-xs-12">
 
                 <div class="box-header with-border">  
+                  <h3 class="box-title"> Cambio agragado </h3>
+                </div>
+              
+                  <table class="table table-bordered table-striped dt-responsive">
+                    <thead>
+                      <tr>
+                        <th style="width: 10px;">#</th>
+                        <th>Cantidad</th>
+                        
+                      </tr>
+                    </thead>
+                    
+                    <tbody>
+                      
+                      <?php 
+
+                      $item = null;
+                      $valor = null;
+
+                      $reportes = ControladorCategorias::ctrMostrarCambio($item, $valor);
+
+                      foreach ($reportes as $key => $value) {
+                  
+
+                    echo '<tr>
+
+                            <td>'.$value["id"].'</td>
+                            <td>$ '.number_format($value["cambio"],2).'</td>
+              
+                          </tr>';
+                        }
+
+                      ?>
+                      
+                    </tbody>
+                  </table>
+                
+              </div>
+
+            <div class="col-md-2 col-xs-12">
+
+                <div class="box-header with-border">  
                   <h3 class="box-title"> Retiros </h3>
                 </div>
               
@@ -133,9 +181,9 @@
                 
               </div>
 
-              <div class="col-md-1">
+              <!-- <div class="col-md-1">
                 
-              </div>
+              </div> -->
               <div class="col-md-2 col-xs-12">
 
                 <div class="box-header with-border">  
@@ -180,9 +228,9 @@
                 
               </div>
 
-              <div class="col-md-1">
+              <!-- <div class="col-md-1">
                 
-              </div>
+              </div> -->
 
               <div class="col-md-2 col-xs-12">
 
@@ -226,9 +274,9 @@
                   </table>
                 
               </div>
-              <div class="col-md-1">
+              <!-- <div class="col-md-1">
                 
-              </div>
+              </div> -->
 
               <div class="col-md-3 col-xs-12">
 
@@ -296,7 +344,7 @@
 
     <div class="modal-content">
       
-      <form role="form" method="post"> 
+      <form role="form" method="post">
 
         <div class="modal-header" style="background: #3c8dbc; color: white;">
 
@@ -312,7 +360,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"> <i class="fa fa-usd"></i> </span>
-                  <input type="text" class="form-control input-lg" name="nuevaCantidad" placeholder="Ingresa La Cantidad" required>
+                  <input type="text" class="form-control input-lg" name="nuevaCantidad" step="any" placeholder="Ingresa La Cantidad" required>
                 </div>
               </div>
 
@@ -367,7 +415,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"> <i class="fa fa-usd"></i> </span>
-                  <input type="text" class="form-control input-lg" name="cantidad" placeholder="Ingresa La Cantidad" required>
+                  <input type="text" class="form-control input-lg" name="cantidad" step="any" placeholder="Ingresa La Cantidad" required>
                 </div>
               </div>
 
@@ -394,6 +442,60 @@
 
           $crearRetiro = new ControladorCategorias();
           $crearRetiro -> ctrCrearRetiro();
+
+         ?>
+
+      </form>
+    </div>
+    
+  </div>
+</div>
+
+<!--=================================
+ =          ###Modal Agregar Cambio ###            =
+ ==================================-->
+ 
+ 
+<div id="modalAgregarCambio" class="modal fade" role="dialog" >
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+      
+      <form role="form" method="post"> 
+
+        <div class="modal-header" style="background: #3c8dbc; color: white;">
+
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Agregar Cambio</h4>
+
+        </div>
+        <div class="modal-body">
+
+          <div class="box-body">
+              
+              <!-- Entrada para el saldo -->
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"> <i class="fa fa-usd"></i> </span>
+                  <input type="text" class="form-control input-lg" name="cantidadSaldo" step="any" placeholder="Ingresa La Cantidad" required>
+                </div>
+              </div>
+
+          </div>
+
+        </div>
+
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cerrar</button>
+
+          <button type="submit" class="btn btn-primary">Agregar Cambio</button>
+        </div>
+
+        <?php 
+
+          $crearCambio = new ControladorCategorias();
+          $crearCambio -> ctrCrearCambio();
 
          ?>
 
