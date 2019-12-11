@@ -250,7 +250,7 @@ class ControladorClientes{
 		}
 	}
 	/*========================================================
-	=            CREAR A LOS CLIENTES BLA BLA BLA            =
+	=            MOSTRAR LOS REPORTES          =
 	========================================================*/
 	static public function ctrMostrarReportes($item, $valor){
 

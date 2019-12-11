@@ -46,7 +46,7 @@
                   <h3 class="box-title"> Reporte Del Día </h3>
                 </div>
               
-              <table class="table table-bordered table-striped dt-responsive ">
+              <table class="table table-bordered table-striped dt-responsive tabla">
               <thead>
                 <tr>
                   <th style="width: 10px;">#</th>
@@ -57,6 +57,7 @@
                   <th>Gastos De Hoy</th>
                   <!-- <th>Descripción</th> -->
                   <th>Saldo Disponible</th>
+                  <th>Imprimir</th>
 
                 </tr>
               </thead>
@@ -83,7 +84,16 @@
                       <!-- <th>Descripcion</th> -->
                       <td>$ '.number_format($value["saldo"],2).'</td>
 
-                      
+                      <td>
+                          
+                          <div class="btn-group">
+                                  
+                                <button class="btn btn-info btnImprimirReporte" idReporte="'.$value["Id"].'">
+                                <i class="fa fa-print"></i>
+                                </button>
+
+                          </div>
+                      </td>
 
                     </tr>';
                   }
