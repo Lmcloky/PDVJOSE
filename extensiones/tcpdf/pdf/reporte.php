@@ -187,24 +187,22 @@ $bloque5 = <<<EOF
 	<table style="font-size:10px; padding:5px 10px;">	
 
 		<tr>		
-			<td style="background-color:white; width:170px">
+			<td style="background-color:white; width:200px">
 				Ventas Canceladas 
 			</td>
-			<td style="background-color:white; width:140px">
-				Cambio Agregado 
-			</td>
-			<td style="background-color:white; width:200px; text-align:center">
+			<td style="background-color:white; width:75px;"></td>
+			<td style="background-color:white; width:250px; text-align:center">
 				Ventas Realizadas
 			</td>
 		</tr>
-		
-			
-		
-
 	</table>
 
 EOF;
 $pdf->writeHTML($bloque5, false, false, false, false, '');
+			
+		
+
+	
 
 /*=====   **************************************BLOQUE 6 *************************************  ======*/
 
@@ -216,17 +214,14 @@ $bloque6 = <<<EOF
 
 		<tr>
 		<td style="background-color:white; width:3px;"></td>
+		<td style="border: 1px solid #666; background-color:white; width:40px; text-align:center">Id</td>
 		<td style="border: 1px solid #666; background-color:white; width:60px; text-align:center">Nº Nota</td>
-		<td style="border: 1px solid #666; background-color:white; width:70px; text-align:center">Cantidad</td>
-		<td style="background-color:white; width:40px;"></td>
+		<td style="border: 1px solid #666; background-color:white; width:90px; text-align:center">Cantidad</td>
+		<td style="background-color:white; width:156px;"></td>
 
-		<td style="border: 1px solid #666; background-color:white; width:30px; text-align:center">id</td>
-		<td style="border: 1px solid #666; background-color:white; width:80px; text-align:center">Cambio</td>
-		<td style="background-color:white; width:40px;"></td>
-
-
+		<td style="border: 1px solid #666; background-color:white; width:40px; text-align:center">Id</td>
 		<td style="border: 1px solid #666; background-color:white; width:60px; text-align:center">Nº Nota</td>
-		<td style="border: 1px solid #666; background-color:white; width:70px; text-align:center">Cantidad</td>
+		<td style="border: 1px solid #666; background-color:white; width:90px; text-align:center">Cantidad</td>
 
 		
 		</tr>
@@ -259,11 +254,15 @@ $bloque8 = <<<EOF
 <table style="font-size:10px; padding:5px 10px;">
 <tr>
 
+<td style="border: 1px solid #666; color:#333; background-color:white; width:40px; text-align:center">
+	$item2[id]
+</td>
+
 <td style="border: 1px solid #666; color:#333; background-color:white; width:60px; text-align:center">
 	$item2[codigo]
 </td>
 
-<td style="border: 1px solid #666; color:#333; background-color:white; width:70px; text-align:center">$ 
+<td style="border: 1px solid #666; color:#333; background-color:white; width:90px; text-align:center">$ 
 	$valorTotal
 </td>
 <td style="background-color:white; width:40px;"></td>
@@ -286,52 +285,6 @@ $pdf->SetTextColor(000, 000, 000);
 $pdf->writeHTMLCell(50, '', '', $y, $bloque8, 0, 1, 1, true, 0, true);
 }
 
-
-//TRAEMOS LA INFORMACIÓN DEL CAMBIO
-
-$itemCambio = null;
-$valorCambio = null;
-
-$respuestaCambio = ControladorCategorias::ctrMostrarCambio($itemCambio, $valorCambio);
-
-foreach ($respuestaCambio as $key => $item1) {
-
-$valorCambio = number_format($item1["cambio"], 2);
-
-// create columns content
-$bloque7 = <<<EOF
-
-<table style="font-size:10px; padding:5px 10px;">
-<tr>
-
-<td style="border: 1px solid #666; color:#333; background-color:white; width:30px; text-align:center">
-	$item1[id]
-</td>
-
-<td style="border: 1px solid #666; color:#333; background-color:white; width:80px; text-align:center">$ 
-	$valorCambio
-</td>
-<td style="background-color:white; width:40px;"></td>
-
-</tr>
-</table>
-
-EOF;
-
-// writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
-
-// get current vertical position
-
-// set color for background
-$pdf->SetFillColor(999, 999, 999);
-
-// set color for text
-$pdf->SetTextColor(000, 000, 000);
-
-// write the first column
-$pdf->writeHTMLCell(50, '', 70, '', $bloque7, 0, 1, 1, true, '', true);
-}
-
 /*=====   **************************************BLOQUE 8 *************************************  ======*/
 
 /*=====   **************************************BLOQUE 8 *************************************  ======*/
@@ -352,11 +305,15 @@ $bloque12 = <<<EOF
 <table style="font-size:10px; padding:5px 10px;">
 <tr>
 
+<td style="border: 1px solid #666; color:#333; background-color:white; width:40px; text-align:center">
+	$item4[id]
+</td>
+
 <td style="border: 1px solid #666; color:#333; background-color:white; width:60px; text-align:center">
 	$item4[codigo]
 </td>
 
-<td style="border: 1px solid #666; color:#333; background-color:white; width:70px; text-align:center">$ 
+<td style="border: 1px solid #666; color:#333; background-color:white; width:90px; text-align:center">$ 
 	$valorVenta
 </td>
 <td style="background-color:white; width:40px;"></td>
@@ -375,12 +332,12 @@ $pdf->SetFillColor(999, 999, 999);
 $pdf->SetTextColor(000, 000, 000);
 
 // write the first column
-$pdf->writeHTMLCell(50, '', 124, '', $bloque12, 0, 1, 1, true, '', true);
+$pdf->writeHTMLCell(50, '', 132, '', $bloque12, 0, 1, 1, true, '', true);
 }
 
 $bloque10 = <<<EOF
 
-	<br><br><br><br><br>
+	<br><br>
 
 	<table style="font-size:10px; padding:5px 10px;">	
 
@@ -388,6 +345,7 @@ $bloque10 = <<<EOF
 			<td style="background-color:white; width:270px">
 				Ventas Editadas
 			</td>
+			<td style="background-color:white; width:75px;"></td>
 			<td style="background-color:white; width:170px">
 				Retiros 
 			</td>
@@ -414,10 +372,10 @@ $bloque11 = <<<EOF
 		<td style="border: 1px solid #666; background-color:white; width:85px; text-align:center">Pago Anterior</td>
 		<td style="border: 1px solid #666; background-color:white; width:75px; text-align:center">Pago Actual</td>
 		<td style="background-color:white; width:3px;"></td>
-			<td style="background-color:white; width:40px;"></td>
+			<td style="background-color:white; width:83px;"></td>
 
-		<td style="border: 1px solid #666; background-color:white; width:32px; text-align:center">Id</td>
-		<td style="border: 1px solid #666; background-color:white; width:70px; text-align:center">Cantidad</td>
+		<td style="border: 1px solid #666; background-color:white; width:40px; text-align:center">Id</td>
+		<td style="border: 1px solid #666; background-color:white; width:90px; text-align:center">Cantidad</td>
 		<td style="border: 1px solid #666; background-color:white; width:100px; text-align:center">Razón</td>
 
 		</tr>
@@ -500,11 +458,11 @@ $bloque13 = <<<EOF
 <table style="font-size:10px; padding:5px 10px;">
 <tr>
 
-<td style="border: 1px solid #666; color:#333; background-color:white; width:32px; text-align:center">
+<td style="border: 1px solid #666; color:#333; background-color:white; width:40px; text-align:center">
 	$item5[Id]
 </td>
 
-<td style="border: 1px solid #666; color:#333; background-color:white; width:70px; text-align:center">$ 
+<td style="border: 1px solid #666; color:#333; background-color:white; width:90px; text-align:center">$ 
 	$valorRetiro
 </td>
 
@@ -526,7 +484,99 @@ $pdf->SetFillColor(999, 999, 999);
 $pdf->SetTextColor(000, 000, 000);
 
 // write the first column
-$pdf->writeHTMLCell(50, '', 103, '', $bloque13, 0, 1, 1, true, '', true);
+$pdf->writeHTMLCell(50, '', 118, '', $bloque13, 0, 1, 1, true, '', true);
+}
+
+/*=====   **************************************BLOQUE 5 *************************************  ======*/
+
+$bloque5 = <<<EOF
+<br><br>
+
+	<table>		
+		<tr>			
+			<td style="width:140px"><img src="images/back.jpg"></td>
+		</tr>
+	</table>
+
+	<table style="font-size:10px; padding:5px 10px;">	
+
+		<tr>		
+			<td style="background-color:white; width:140px">
+				Cambio Agregado 
+			</td>
+		</tr>
+	</table>
+
+EOF;
+$pdf->writeHTML($bloque5, false, false, false, false, '');
+			
+
+$bloque6 = <<<EOF
+
+	<br>
+
+	<table style="font-size:10px; padding:5px 10px;">
+
+		<tr>
+		<td style="background-color:white; width:3px;"></td>
+
+		<td style="border: 1px solid #666; background-color:white; width:40px; text-align:center">id</td>
+		<td style="border: 1px solid #666; background-color:white; width:90px; text-align:center">Cambio</td>
+		<td style="background-color:white; width:40px;"></td>
+		
+		</tr>
+
+
+
+	</table>
+
+
+EOF;
+$pdf->writeHTML($bloque6, false, false, false, false, '');	
+
+//TRAEMOS LA INFORMACIÓN DEL CAMBIO
+
+$itemCambio = null;
+$valorCambio = null;
+
+$respuestaCambio = ControladorCategorias::ctrMostrarCambio($itemCambio, $valorCambio);
+
+foreach ($respuestaCambio as $key => $item1) {
+
+$valorCambio = number_format($item1["cambio"], 2);
+
+// create columns content
+$bloque7 = <<<EOF
+
+<table style="font-size:10px; padding:5px 10px;">
+<tr>
+
+<td style="border: 1px solid #666; color:#333; background-color:white; width:40px; text-align:center">
+	$item1[id]
+</td>
+
+<td style="border: 1px solid #666; color:#333; background-color:white; width:90px; text-align:center">$ 
+	$valorCambio
+</td>
+<td style="background-color:white; width:40px;"></td>
+
+</tr>
+</table>
+
+EOF;
+
+// writeHTMLCell($w, $h, $x, $y, $html='', $border=0, $ln=0, $fill=0, $reseth=true, $align='', $autopadding=true)
+
+// get current vertical position
+$y = $pdf->getY();
+// set color for background
+$pdf->SetFillColor(999, 999, 999);
+
+// set color for text
+$pdf->SetTextColor(000, 000, 000);
+
+// write the first column
+$pdf->writeHTMLCell(50, '', '', $y, $bloque7, 0, 1, 1, true, '', true);
 }
 
 // ---------------------------SALIDA DEL ARCHIVO----------------------------
