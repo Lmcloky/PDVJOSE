@@ -1,0 +1,66 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "139187dcf1ba64cd4199ea1b72919d80",
+    "packages": [
+        {
+            "name": "luecano/numero-a-letras",
+            "version": "v1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/luecano/numero-a-letras.git",
+                "reference": "f09538b1cc0570f0a6835f8d64da2922a2bf6822"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/luecano/numero-a-letras/zipball/f09538b1cc0570f0a6835f8d64da2922a2bf6822",
+                "reference": "f09538b1cc0570f0a6835f8d64da2922a2bf6822",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Luecano\\NumeroALetras\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Luis Cano",
+                    "email": "luecano@gmail.com",
+                    "homepage": "https://github.com/luecano/numero-a-letras",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Convierte un número a letras.",
+            "homepage": "https://github.com/luecano/numero-a-letras",
+            "keywords": [
+                "convertir",
+                "facturacion",
+                "letras",
+                "numero",
+                "sunat"
+            ],
+            "time": "2019-12-07T20:44:26+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.3.0"
+    },
+    "platform-dev": []
+}

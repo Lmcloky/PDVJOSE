@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Mike42\\' => array($vendorDir . '/mike42/escpos-php/src/Mike42'),
+    'Luecano\\NumeroALetras\\' => array($vendorDir . '/luecano/numero-a-letras/src'),
 );

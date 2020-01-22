@@ -91,8 +91,6 @@ class TablaProductos{
 		 } ';
 		
 		echo $datosJson;
-
-
 	}
 }
 

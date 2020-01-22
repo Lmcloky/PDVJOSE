@@ -31,6 +31,29 @@ class ModeloVentas{
 		$stmt = null;
 		
 	}
+		static public function mdlMostrarVentasPendientes($tabla, $item, $valor){
+
+		if ($item != null) {
+			
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item where estado=0");
+			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+			$stmt -> execute();
+
+			return $stmt -> fetch();
+
+		}else{
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla where estado=0");
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}
+
+		$stmt -> close();
+		$stmt = null;
+		
+	}
 
 		static public function mdlIngresarVenta($tabla, $datos){
 

@@ -11,12 +11,20 @@ class ComposerStaticInit2b73d58cde6e023519ff196235bbbb53
         array (
             'Mike42\\' => 7,
         ),
+        'L' => 
+        array (
+            'Luecano\\NumeroALetras\\' => 22,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'Mike42\\' => 
         array (
             0 => __DIR__ . '/..' . '/mike42/escpos-php/src/Mike42',
+        ),
+        'Luecano\\NumeroALetras\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/luecano/numero-a-letras/src',
         ),
     );
 

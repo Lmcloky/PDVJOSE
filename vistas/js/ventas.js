@@ -134,7 +134,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
 
 	          '<div class="col-xs-3">'+
 	            
-	             '<input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" step="0.001" value="1" stock="'+stock+'" nuevoStock="'+Number(stock-1)+'" required>'+
+	             '<input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" step="any" value="1" stock="'+stock+'" nuevoStock="'+Number(stock-1)+'" required>'+
 
 	          '</div>' +
 
@@ -311,7 +311,7 @@ $(".btnAgregarProducto").click(function(){
 
 	          '<div class="col-xs-3 ingresoCantidad">'+
 	            
-	             '<input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" step="0.001" value="1" stock nuevoStock required>'+
+	             '<input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" step="any" value="1" stock nuevoStock required>'+
 
 	          '</div>' +
 
@@ -573,6 +573,17 @@ $("#nuevoMetodoPago").change(function(){
       	// Listar método en la entrada
       	listarMetodos()
 
+	}else if(metodo == "Credito"){
+
+		$(this).parent().parent().removeClass("col-xs-6");
+
+		$(this).parent().parent().addClass("col-xs-4");
+
+		$(this).parent().parent().parent().children(".cajasMetodoPago").html()
+
+		// Listar método en la entrada
+      	listarMetodos()
+
 	}else{
 
 		$(this).parent().parent().removeClass('col-xs-4');
@@ -657,6 +668,10 @@ function listarMetodos(){
 	if($("#nuevoMetodoPago").val() == "Efectivo"){
 
 		$("#listaMetodoPago").val("Efectivo");
+
+	}else if($("#nuevoMetodoPago").val() == "Credito"){
+
+		$("#listaMetodoPago").val("Credito");
 
 	}else{
 
@@ -788,7 +803,7 @@ $('#daterange-btn').daterangepicker(
     var capturarRango = $("#daterange-btn span").html();   
     console.log("capturarRango")
    	localStorage.setItem("capturarRango", capturarRango);
-   	window.location = "index.php?ruta=ventas&fechaInicial="+fechaInicial+"&fechaFinal="+fechaFinal;
+   	window.location = "index.php?ruta=ventas&fechaInicial="+fechaInicial+"&fechaFinal="+fechaFinal+" 23:59:59";
 
   }
 )
@@ -840,7 +855,7 @@ $(".daterangepicker.opensleft .ranges li").on("click", function(){
 
     	localStorage.setItem("capturarRango", "Hoy");
 
-    	window.location = "index.php?ruta=ventas&fechaInicial="+fechaInicial+"&fechaFinal="+fechaFinal;
+    	window.location = "index.php?ruta=ventas&fechaInicial="+fechaInicial+"&fechaFinal="+fechaFinal+" 23:59:59";
 
 	}
 

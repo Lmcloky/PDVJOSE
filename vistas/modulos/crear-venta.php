@@ -193,6 +193,7 @@
                             <select class="form-control" id="nuevoMetodoPago" name="nuevoMetodoPago" required>
                               <option value="">Seleccione método de pago</option>
                               <option value="Efectivo">Efectivo</option>
+                              <option value="Credito">Credito</option>
                               <option value="TC">Tarjeta de Crédito</option>
                               <option value="TD">Tarjeta De Débito</option>
                             </select>

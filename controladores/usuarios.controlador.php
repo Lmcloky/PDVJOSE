@@ -410,7 +410,7 @@
 							swal({
 
 								type: "success",
-								title: "El usuario ha sido borrado correctamente",
+								title: "El usuario ha sido eliminado correctamente",
 								showConfirmButton: true,
 								confirmButtonText: "Cerrar",
 								closeOnConfirm: false

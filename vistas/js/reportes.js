@@ -36,11 +36,11 @@ $('#daterange-btn2').daterangepicker(
 
     var fechaFinal = end.format('YYYY-MM-DD');
 
-    var capturarRango = $("#daterange-btn2 span").html();
+    var capturarRango2 = $("#daterange-btn2 span").html();
    
-    localStorage.setItem("capturarRango2", capturarRango);
+    localStorage.setItem("capturarRango2", capturarRango2);
 
-    window.location = "index.php?ruta=reportes&fechaInicial="+fechaInicial+"&fechaFinal="+fechaFinal;
+    window.location = "index.php?ruta=reportes&fechaInicial="+fechaInicial+"&fechaFinal="+fechaFinal+" 23:59:59";
 
   }
 
@@ -97,7 +97,7 @@ $(".daterangepicker.opensright .ranges li").on("click", function(){
 
       localStorage.setItem("capturarRango2", "Hoy");
 
-      window.location = "index.php?ruta=reportes&fechaInicial="+fechaInicial+"&fechaFinal="+fechaFinal;
+      window.location = "index.php?ruta=reportes&fechaInicial="+fechaInicial+"&fechaFinal="+fechaFinal+" 23:59:59";
 
   }
 

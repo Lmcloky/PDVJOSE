@@ -52,6 +52,7 @@
                   <th style="width: 10px;">#</th>
                   <th>Saldo Inicial</th>
                   <th>Total de Ventas</th>
+                  <th>Total de Pagos</th>
                   <th>Ventas</th>
                   <th>Total de retiros</th>
                   <th>Gastos De Hoy</th>
@@ -78,6 +79,7 @@
                       <td>'.$value["Id"].'</td>
                       <td>$ '.number_format($value["saldo_inicial"],2).'</td>
                       <td>'.$value["ventas"].'</td>
+                      <td>'.$value["pagos"].'</td>
                       <td>$ '.number_format($value["dinero"],2).'</td>
                       <td>'.$value["retiros"].'</td>
                       <td>$ '.number_format($value["gastos"],2).'</td>
@@ -194,7 +196,7 @@
               <!-- <div class="col-md-1">
                 
               </div> -->
-              <div class="col-md-2 col-xs-12">
+              <div class="col-md-4 col-xs-12">
 
                 <div class="box-header with-border">  
                   <h3 class="box-title"> Ventas Realizadas </h3>
@@ -205,7 +207,9 @@
                       <tr>
                         <th style="width: 10px;">#</th>
                         <th>N° De Nota</th>
+                        <th>Metodo de pago</th>
                         <th>Cantidad</th>
+                        <th>Total Pagado</th>
                       </tr>
                     </thead>
                     
@@ -225,8 +229,9 @@
 
                             <td>'.$value["id"].'</td>
                             <td>'.$value["codigo"].'</td>
+                            <td>'.$value["metodo_pago"].'</td>
                             <td>$ '.number_format($value["total"],2).'</td>
-                            
+                            <td>$ '.number_format($value["total_pagado"],2).'</td>
               
                           </tr>';
                         }
@@ -242,10 +247,10 @@
                 
               </div> -->
 
-              <div class="col-md-2 col-xs-12">
+              <div class="col-md-3 col-xs-12">
 
                 <div class="box-header with-border">  
-                  <h3 class="box-title"> Ventas Canceladas </h3>
+                  <h3 class="box-title"> Abono de ventas a credito </h3>
                 </div>
               
                   <table class="table table-bordered table-striped dt-responsive">
@@ -253,6 +258,7 @@
                       <tr>
                         <th style="width: 10px;">#</th>
                         <th>N° de Nota</th>
+                        <th>Metodo de Pago</th>
                         <th>Cantidad</th>
                       </tr>
                     </thead>
@@ -264,16 +270,16 @@
                       $item = null;
                       $valor = null;
 
-                      $reportes = ControladorCategorias::ctrMostrarVentasCanceladas($item, $valor);
+                      $reportes = ControladorPagos::ctrMostrarPagosHoy($item, $valor);
 
                       foreach ($reportes as $key => $value) {
                   
 
                     echo '<tr>
-
                             <td>'.$value["id"].'</td>
-                            <td>'.$value["codigo"].'</td>
-                            <td>$ '.number_format($value["total"],2).'</td>
+                            <td>'.$value["codigo_venta"].'</td>
+                            <td>'.$value["metodo_pago"].'</td>
+                            <td>$ '.number_format($value["abono"],2).'</td>
                             
                           </tr>';
                         }
@@ -288,7 +294,7 @@
                 
               </div> -->
 
-              <div class="col-md-3 col-xs-12">
+<!--               <div class="col-md-3 col-xs-12">
 
                 <div class="box-header with-border">  
                   <h3 class="box-title"> Ventas Editadas </h3>
@@ -329,7 +335,7 @@
                       
                     </tbody>
                   </table>
-              </div>
+              </div> -->
             
 
           </div>

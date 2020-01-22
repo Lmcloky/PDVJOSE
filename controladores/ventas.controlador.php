@@ -4,6 +4,7 @@ use Mike42\Escpos\Printer;
 use Mike42\Escpos\EscposImage;
 use Mike42\Escpos\PrintConnectors\FilePrintConnector;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
+use Luecano\NumeroALetras\NumeroALetras;
 
 class ControladorVentas{
 
@@ -16,6 +17,14 @@ class ControladorVentas{
 		$tabla = "ventas";
 
 		$respuesta = ModeloVentas::mdlMostrarVentas($tabla, $item, $valor);
+
+		return $respuesta;
+	}
+	static public function ctrMostrarVentasPendientes($item, $valor){
+
+		$tabla = "ventas";
+
+		$respuesta = ModeloVentas::mdlMostrarVentasPendientes($tabla, $item, $valor);
 
 		return $respuesta;
 	}

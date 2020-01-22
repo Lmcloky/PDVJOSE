@@ -46,8 +46,9 @@
                   <th >Cliente</th>
                   <th >Vendedor</th>
                   <th >Forma de pago</th>
-                  <th >Neto</th>
                   <th >Total</th>
+                  <th >Total Pagado</th>
+                  <th >Estado</th>
                   <th >Fecha</th>
                   <th >Acciones</th>
 
@@ -96,11 +97,17 @@
 
                             <td>'.$value["metodo_pago"].'</td>
 
-                            <td>$ '.number_format($value["neto"],2).'</td>
-
                             <td>$ '.number_format($value["total"],2).'</td>
 
-                            <td>'.$value["fecha"].'</td>
+                            <td>$ '.number_format($value["total_pagado"],2).'</td>';
+
+                              if ($value["estado"] != 0) {
+                                echo '<td> <button class="btn btn-success btn-xs" estado="0"> Pagado </button> </td>';
+                              }else{
+                                echo '<td> <button class="btn btn-danger btn-xs" estado="1"> Adeudo </button> </td>';
+                              };
+
+                            echo '<td>'.$value["fecha"].'</td>
 
                             <td>
 
@@ -117,7 +124,7 @@
                                 <button class="btn btn-danger btnEliminarVenta" idVenta="'.$value["id"].'"><i class="fa fa-times"></i></button>';
                               }
 
-                              echo '</div>  
+                              echo '</div>
 
                             </td>
 

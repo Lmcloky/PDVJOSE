@@ -7,12 +7,21 @@
 	require_once "controladores/productos.controlador.php";
 	require_once "controladores/clientes.controlador.php";
 	require_once "controladores/ventas.controlador.php";
+	require_once "controladores/cotizaciones.controlador.php";
+	require_once "controladores/pagos.controlador.php";
+	require_once "controladores/entradas.controlador.php";
+	require_once "controladores/translados.controlador.php";
 
 	require_once "modelos/usuarios.modelo.php";
 	require_once "modelos/categorias.modelo.php";
 	require_once "modelos/productos.modelo.php";
 	require_once "modelos/clientes.modelo.php";
 	require_once "modelos/ventas.modelo.php";
+	require_once "modelos/cotizaciones.modelo.php";
+	require_once "modelos/pagos.modelo.php";
+	require_once "modelos/entradas.modelo.php";
+	require_once "modelos/translados.modelo.php";
+
 	require_once "extensiones/vendor/autoload.php";
 
 

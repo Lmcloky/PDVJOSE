@@ -308,7 +308,7 @@ class ControladorProductos{
 					swal({
 
 						type: "success",
-						title: "El producto ha sido borrado correctamente",
+						title: "El producto ha sido eliminado correctamente",
 						showConfirmButton: true,
 						confirmButtonText: "Cerrar",
 						closeOnConfirm: false

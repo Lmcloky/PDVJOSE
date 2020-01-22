@@ -133,6 +133,13 @@
             $_GET["ruta"] == "editar-venta" ||
             $_GET["ruta"] == "reportes" ||
             $_GET["ruta"] == "reporte" ||
+            $_GET["ruta"] == "cotizaciones" ||
+            $_GET["ruta"] == "crear-cotizacion" ||
+            $_GET["ruta"] == "pagos" ||
+            $_GET["ruta"] == "entradas" ||
+            $_GET["ruta"] == "crear-entrada" ||
+            $_GET["ruta"] == "translados" ||
+            $_GET["ruta"] == "crear-translado" ||
             $_GET["ruta"] == "salir"){
 
           include "modulos/".$_GET["ruta"].".php";
@@ -142,6 +149,7 @@
 
         }
       }else{
+
         include "modulos/inicio.php";
 
       }
@@ -168,6 +176,10 @@
 <script src="vistas/js/ventas.js"></script>
 <script src="vistas/js/reportes.js"></script>
 <script src="vistas/js/reporte.js"></script>
+<script src="vistas/js/cotizacion.js"></script>
+<script src="vistas/js/pagos.js"></script>
+<script src="vistas/js/entradas.js"></script>
+<script src="vistas/js/translados.js"></script>
 
 </body>
 </html>

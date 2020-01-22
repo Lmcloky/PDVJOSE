@@ -1,0 +1,50 @@
+[
+    {
+        "name": "luecano/numero-a-letras",
+        "version": "v1.4.0",
+        "version_normalized": "1.4.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/luecano/numero-a-letras.git",
+            "reference": "f09538b1cc0570f0a6835f8d64da2922a2bf6822"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/luecano/numero-a-letras/zipball/f09538b1cc0570f0a6835f8d64da2922a2bf6822",
+            "reference": "f09538b1cc0570f0a6835f8d64da2922a2bf6822",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.6"
+        },
+        "time": "2019-12-07T20:44:26+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Luecano\\NumeroALetras\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Luis Cano",
+                "email": "luecano@gmail.com",
+                "homepage": "https://github.com/luecano/numero-a-letras",
+                "role": "Developer"
+            }
+        ],
+        "description": "Convierte un número a letras.",
+        "homepage": "https://github.com/luecano/numero-a-letras",
+        "keywords": [
+            "convertir",
+            "facturacion",
+            "letras",
+            "numero",
+            "sunat"
+        ]
+    }
+]

@@ -22,7 +22,8 @@
     }
   ],
   "require": {
-    "php": ">=5.3.0"
+    "php": ">=5.3.0",
+    "luecano/numero-a-letras": "^1.4"
   },
   "autoload": {
     "classmap": [
