@@ -125,7 +125,16 @@
 
                   foreach ($ventas as $key => $value) {
                     
-                    echo '<option value="'.$value["id"].'">'.$value["codigo"].'</option>';
+                    echo '<option value="'.$value["id"].'">';
+
+                        $itemCliente = "id";
+                        $valorCliente = $value["id_cliente"];
+
+                        $respuestaCliente = ControladorClientes::ctrMostrarClientes($itemCliente, $valorCliente);
+
+                        $resta = $value["total"]-$value["total_pagado"];
+
+                    echo 'Venta '.$value["codigo"].' Cliente: '.$respuestaCliente["nombre"].' Resta: '.$resta.' </option>';
                   }
 
                   ?>

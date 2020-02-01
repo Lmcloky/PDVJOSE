@@ -120,7 +120,7 @@ $(".tablaEntradas tbody").on("click", "button.agregarProducto", function(){
 
 	          '<div class="col-xs-4">'+
 	            
-	             '<input  type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" step="any" value="1" stock="'+stock+'" nuevoStock="'+Number(stock-1)+'" required>'+
+	             '<input  type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" step="any" value="0" stock="'+stock+'" nuevoStock="'+Number(stock)+'" required>'+
 
 	          '</div>' +
 

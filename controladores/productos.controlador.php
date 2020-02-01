@@ -342,7 +342,7 @@ class ControladorProductos{
 
 	}
 
-		/*=============================================
+	/*=============================================
 	MOSTRAR SUMA VENTAS
 	=============================================*/
 
@@ -351,6 +351,16 @@ class ControladorProductos{
 		$tabla = "productos";
 
 		$respuesta = ModeloProductos::mdlMostrarSumaVentas($tabla);
+
+		return $respuesta;
+
+	}
+
+	public function ctrSumaTotalStock(){
+
+		$tabla = "productos";
+
+		$respuesta = ModeloProductos::mdlSumaTotalStock($tabla);
 
 		return $respuesta;
 

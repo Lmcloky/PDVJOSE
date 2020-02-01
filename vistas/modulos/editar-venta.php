@@ -17,11 +17,11 @@ if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor"){
 
     <section class="content-header">
       <h1>
-        Crear Venta
+        Editar Venta
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i>Inicio</a></li>
-        <li class="active">Crear Venta</li>
+        <li class="active">Editar Venta</li>
       </ol>
     </section>
 
@@ -162,7 +162,7 @@ if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor"){
                           </div>
 
                           <div class="col-xs-3">                
-                            <input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" step="0.001" value="'.$value["cantidad"].'" stock="'.$stockAntiguo.'" nuevoStock="'.$value["stock"].'" required>
+                            <input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" step="any" value="'.$value["cantidad"].'" stock="'.$stockAntiguo.'" nuevoStock="'.$value["stock"].'" required>
                           </div>
 
                           <div class="col-xs-3 ingresoPrecio" style="padding-left:0px">
@@ -195,7 +195,7 @@ if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor"){
                             <thead>
                               
                               <tr>
-                                <th>Impuesto</th>
+                                <th>Descuento</th>
                                 <th>Total</th>
                               </tr>
 
@@ -259,6 +259,27 @@ if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor"){
                         <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
 
                       </div>
+
+                      <!-- CHECKBOX PARA PORCENTAJE -->
+
+                      <div class="col-xs-2">                    
+                        <div class="form-group">           
+                          <label>                        
+                            <input type="checkbox" name="ticket" id="ticket" class="flat-red ticket" checked>
+                            Ticket
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-xs-2">                    
+                        <div class="form-group">           
+                          <label>                        
+                            <input type="checkbox" name="pdf" id="pdf" class="flat-red pdf" checked>
+                            PDF
+                          </label>
+                        </div>
+                      </div>
+
+                      <hr>
                   <br>
                 </div>
 
@@ -286,7 +307,7 @@ if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor"){
         <!--======================================================================================================================
         =                                              TABLA DE PRODUCTOS                                                      =
         =======================================================================================================================-->
-        <div class="col-lg-7 hidden-md hidden-sm hidden-xs">
+        <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
           
           <div class="box box-warning">
             

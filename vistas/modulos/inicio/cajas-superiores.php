@@ -6,6 +6,12 @@ $orden = "id";
 
 $ventas = ControladorVentas::ctrSumaTotalVentas();
 
+$item = null;
+$valor = null;
+$orden = "id";
+
+$stock = ControladorProductos::ctrSumaTotalStock();
+
 $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
 $totalCategorias = count($categorias);
 
@@ -39,8 +45,8 @@ $totalProductos = count($productos);
   </div>
 </div>
 <!-- ./col -->
-<div class="col-lg-3 col-xs-6">
-  <div class="small-box bg-green">
+<div class="col-lg-2 col-xs-6">
+  <div class="small-box bg-teal">
     <div class="inner">
 
       <h3><?php echo number_format($totalCategorias); ?></h3>
@@ -59,8 +65,8 @@ $totalProductos = count($productos);
   </div>
 </div>
 
-<div class="col-lg-3 col-xs-6">
-  <div class="small-box bg-yellow">
+<div class="col-lg-2 col-xs-6">
+  <div class="small-box bg-blue">
     <div class="inner">
 
       <h3><?php echo number_format($totalClientes); ?></h3>
@@ -79,8 +85,8 @@ $totalProductos = count($productos);
   </div>
 </div>
 
-<div class="col-lg-3 col-xs-6">
-  <div class="small-box bg-red">
+<div class="col-lg-2 col-xs-6">
+  <div class="small-box bg-olive">
     <div class="inner">
 
       <h3><?php echo number_format($totalProductos); ?></h3>
@@ -90,6 +96,26 @@ $totalProductos = count($productos);
     </div>
     <div class="icon">
       <i class="ion ion-ios-cart"></i>
+    </div>
+
+    <a href="productos" class="small-box-footer">
+      Más Información <i class="fa fa-arrow-circle-right"></i>
+    </a>
+
+  </div>
+</div>
+
+<div class="col-lg-3 col-xs-6">
+  <div class="small-box bg-navy">
+    <div class="inner">
+
+      <h3>$<?php echo number_format($stock["total"],2); ?> </h3>
+
+      <p>Valor en Inventario</p>
+
+    </div>
+    <div class="icon">
+      <i class="ion ion-social-usd"></i>
     </div>
 
     <a href="productos" class="small-box-footer">

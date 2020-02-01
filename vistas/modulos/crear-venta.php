@@ -143,7 +143,7 @@
                             <thead>
                               
                               <tr>
-                                <th>Impuesto</th>
+                                <th>Descuento</th>
                                 <th>Total</th>
                               </tr>
 
@@ -207,6 +207,27 @@
                         <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
 
                       </div>
+
+                      <!-- CHECKBOX PARA PORCENTAJE -->
+
+                      <div class="col-xs-2">                    
+                        <div class="form-group">           
+                          <label>                        
+                            <input type="checkbox" name="ticket" id="ticket" class="flat-red ticket" checked>
+                            Ticket
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-xs-2">                    
+                        <div class="form-group">           
+                          <label>                        
+                            <input type="checkbox" name="pdf" id="pdf" class="flat-red pdf" checked>
+                            PDF
+                          </label>
+                        </div>
+                      </div>
+
+                      <hr>
                   <br>
                 </div>
 
@@ -234,7 +255,7 @@
         <!--======================================================================================================================
         =                                              TABLA DE PRODUCTOS                                                      =
         =======================================================================================================================-->
-        <div class="col-lg-7 hidden-md hidden-sm hidden-xs">
+        <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
           
           <div class="box box-warning">
             

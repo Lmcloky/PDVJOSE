@@ -269,8 +269,21 @@ MODAL AGREGAR PRODUCTO
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"> <i class="fa fa-th"></i> </span>
-                  <select class="form-control input-lg"  name="editarCategoria" readonly required>
+                  <select class="form-control input-lg"  name="editarCategoria"  required>
                     <option id="editarCategoria"></option>
+                    <?php
+
+                  $item = null;
+                  $valor = null;
+
+                  $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+
+                  foreach ($categorias as $key => $value) {
+                    
+                    echo '<option value="'.$value["id"].'">'.$value["categoria"].'</option>';
+                  }
+
+                  ?>
                   </select>
                 </div>
               </div>
@@ -322,6 +335,7 @@ MODAL AGREGAR PRODUCTO
                     <input type="number" class="form-control input-lg" id="editarPrecioVenta" name="editarPrecioVenta" min="0" step="any" readonly required="">
                   </div>
                   <br>
+
                   <!-- CHECKBOX PARA PORCENTAJE -->
                   <div class="col-xs-6">
                     <div class="form-group">
@@ -331,6 +345,7 @@ MODAL AGREGAR PRODUCTO
                       </label>
                     </div>
                   </div>
+                  
                   <!-- ENTRADA PARA PORCENTAJE -->
                   <div class="col-xs-6" style="padding: 0">
                     <div class="input-group">

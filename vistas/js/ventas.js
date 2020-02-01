@@ -146,7 +146,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
 
 	              '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
 	                 
-	              '<input type="text" class="form-control nuevoPrecioProducto" precioReal="'+precio+'" name="nuevoPrecioProducto" value="'+precio+'" readonly required>'+
+	              '<input type="text" class="form-control nuevoPrecioProducto" precioReal="'+precio+'" name="nuevoPrecioProducto" value="'+precio+'"  required>'+
 	 
 	            '</div>'+
 	             
@@ -504,7 +504,7 @@ function agregarImpuesto(){
 
 	var precioImpuesto = Number(precioTotal * impuesto/100);
 
-	var totalConImpuesto = Number(precioImpuesto) + Number(precioTotal);
+	var totalConImpuesto = Number(precioTotal) - Number(precioImpuesto);
 	
 	$("#nuevoTotalVenta").val(totalConImpuesto);
 

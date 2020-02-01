@@ -110,6 +110,7 @@ class ControladorVentas{
 
 			if($respuesta == "ok"){
 
+
 				// $impresora = "epsontm";
 
 				// $conector = new WindowsPrintConnector($impresora);
@@ -121,7 +122,107 @@ class ControladorVentas{
 				// $imprimir -> cut();
 
 				// $imprimir -> close();
+				// 
+				if ($_POST["ticket"] && $_POST["pdf"]) {
+
+				$impresora = "epsontm";
+
+				$conector = new WindowsPrintConnector($impresora);
+
+				$printer = new Printer($conector);
+
+				$printer -> setJustification(Printer::JUSTIFY_CENTER);
+
+				$printer -> text(date("Y-m-d H:i:s")."\n");//Fecha de la factura
+
+				$printer -> feed(1); //Alimentamos el papel 1 vez*/
+
+				$printer -> text("**FERREMATERIALES LA CASCADA**"."\n");//Nombre de la empresa
+
+				$printer -> text("SANTA MARIA PIPIOLTEPEC S/N, ENTRADA LAS"."\n");//Dirección de la empresa
+				$printer -> text("CARMELITAS, LA CASCADA VALLE DE BRAVO,"."\n");//Dirección de la empresa
+				$printer -> text("ESTADO DE MÉXICO C.P. 51200"."\n");//Dirección de la empresa
+
+				$printer -> text("Tel: 01 726 110 1214  Cel: 722 183 7283"."\n");//Teléfono de la empresa
+
+				$printer -> text("Ticket N.".$_POST["nuevaVenta"]."\n");//Número de factura
+
+				$printer -> feed(1); //Alimentamos el papel 1 vez*/
+
+				$printer -> text("Cliente: ".$traerCliente["nombre"]."\n");//Nombre del cliente
+
+				$tablaVendedor = "usuarios";
+				$item = "id";
+				$valor = $_POST["idVendedor"];
+
+				$traerVendedor = ModeloUsuarios::mdlMostrarUsuarios($tablaVendedor, $item, $valor);
+
+				$printer -> text("Vendedor: ".$traerVendedor["nombre"]."\n");//Nombre del vendedor
+
+				$printer -> feed(1); //Alimentamos el papel 1 vez*/
+
+				$printer->setJustification(Printer::JUSTIFY_LEFT);
+
+				$printer -> text("Productos    Precio     Cantidad   Total"."\n");
+
+
+				foreach ($listaProductos as $key => $value) {
+
+					$printer->setJustification(Printer::JUSTIFY_LEFT);
+
+					$printer->text($value["descripcion"]."\n");//Nombre del producto
+
+					$printer->setJustification(Printer::JUSTIFY_RIGHT);
+
+					$printer->text("$ ".number_format($value["precio"],2)." Und x ".$value["cantidad"]." = $ ".number_format($value["total"],2)."\n");
+
+				}
+
+				$printer -> feed(1); //Alimentamos el papel 1 vez*/			
 				
+				$printer->text("NETO: $ ".number_format($_POST["nuevoPrecioNeto"],2)."\n"); //ahora va el neto
+
+				$printer->text("IMPUESTO: Ya Agregado "."\n"); //ahora va el impuesto
+
+				$printer->text("--------\n");
+
+				$printer->text("TOTAL: $ ".number_format($_POST["totalVenta"],2)."\n"); //ahora va el total
+
+				$printer -> feed(1); //Alimentamos el papel 1 vez*/	
+
+				$printer->text("Muchas gracias por su compra"); //Podemos poner también un pie de página
+
+				$printer -> feed(3); //Alimentamos el papel 3 veces*/
+
+				$printer -> cut(); //Cortamos el papel, si la impresora tiene la opción
+
+				$printer -> pulse(); //Por medio de la impresora mandamos un pulso, es útil cuando hay cajón monedero
+
+				$printer -> close();
+
+
+				echo'<script>
+
+				localStorage.removeItem("rango");
+
+				swal({
+					  type: "success",
+					  title: "La venta ha sido guardada correctamente",
+					  showConfirmButton: true,
+					  confirmButtonText: "Cerrar"
+					  }).then((result) => {
+								if (result.value) {
+
+								window.open("extensiones/tcpdf/pdf/factura.php?codigo="+'.$_POST["nuevaVenta"].', "_blank");
+								window.location = "ventas";
+
+								}
+							})
+
+				</script>';
+
+				}else if ($_POST["ticket"]) {
+
 				$impresora = "epsontm";
 
 				$conector = new WindowsPrintConnector($impresora);
@@ -216,6 +317,52 @@ class ControladorVentas{
 							})
 
 				</script>';
+
+				}if ($_POST["pdf"]) {
+
+				echo'<script>
+
+				localStorage.removeItem("rango");
+
+				swal({
+					  type: "success",
+					  title: "La venta ha sido guardada correctamente",
+					  showConfirmButton: true,
+					  confirmButtonText: "Cerrar"
+					  }).then((result) => {
+								if (result.value) {
+
+								window.open("extensiones/tcpdf/pdf/factura.php?codigo="+'.$_POST["nuevaVenta"].', "_blank");
+								window.location = "ventas";
+
+								}
+							})
+
+				</script>';
+
+				}else
+				{
+
+				echo'<script>
+
+				localStorage.removeItem("rango");
+
+				swal({
+					  type: "success",
+					  title: "La venta ha sido guardada correctamente",
+					  showConfirmButton: true,
+					  confirmButtonText: "Cerrar"
+					  }).then((result) => {
+								if (result.value) {
+
+								window.location = "ventas";
+
+								}
+							})
+
+				</script>';
+
+				}
 
 			}
 
@@ -373,7 +520,110 @@ class ControladorVentas{
 
 			$respuesta = ModeloVentas::mdlEditarVenta($tabla, $datos);
 
+
+
 			if($respuesta == "ok"){
+
+
+
+				if ($_POST["ticket"] && $_POST["pdf"]) {
+
+				$impresora = "epsontm";
+
+				$conector = new WindowsPrintConnector($impresora);
+
+				$printer = new Printer($conector);
+
+				$printer -> setJustification(Printer::JUSTIFY_CENTER);
+
+				$printer -> text(date("Y-m-d H:i:s")."\n");//Fecha de la factura
+
+				$printer -> feed(1); //Alimentamos el papel 1 vez*/
+
+				$printer -> text("**FERREMATERIALES LA CASCADA**"."\n");//Nombre de la empresa
+
+				$printer -> text("SANTA MARIA PIPIOLTEPEC S/N, ENTRADA LAS"."\n");//Dirección de la empresa
+				$printer -> text("CARMELITAS, LA CASCADA VALLE DE BRAVO,"."\n");//Dirección de la empresa
+				$printer -> text("ESTADO DE MÉXICO C.P. 51200"."\n");//Dirección de la empresa
+
+				$printer -> text("Tel: 01 726 110 1214  Cel: 722 183 7283"."\n");//Teléfono de la empresa
+
+				$printer -> text("Ticket N.".$_POST["editarVenta"]."\n");//Número de factura
+
+				$printer -> feed(1); //Alimentamos el papel 1 vez*/
+
+				$printer -> text("Cliente: ".$traerCliente_2["nombre"]."\n");//Nombre del cliente
+
+				$tablaVendedor = "usuarios";
+				$item = "id";
+				$valor = $_POST["idVendedor"];
+
+				$traerVendedor = ModeloUsuarios::mdlMostrarUsuarios($tablaVendedor, $item, $valor);
+
+				$printer -> text("Vendedor: ".$traerVendedor["nombre"]."\n");//Nombre del vendedor
+
+				$printer -> feed(1); //Alimentamos el papel 1 vez*/
+
+				$printer->setJustification(Printer::JUSTIFY_LEFT);
+
+				$printer -> text("Productos    Precio     Cantidad   Total"."\n");
+
+
+				foreach ($listaProductos_2 as $key => $value) {
+
+					$printer->setJustification(Printer::JUSTIFY_LEFT);
+
+					$printer->text($value["descripcion"]."\n");//Nombre del producto
+
+					$printer->setJustification(Printer::JUSTIFY_RIGHT);
+
+					$printer->text("$ ".number_format($value["precio"],2)." Und x ".$value["cantidad"]." = $ ".number_format($value["total"],2)."\n");
+
+				}
+
+				$printer -> feed(1); //Alimentamos el papel 1 vez*/			
+				
+				$printer->text("NETO: $ ".number_format($_POST["nuevoPrecioNeto"],2)."\n"); //ahora va el neto
+
+				$printer->text("IMPUESTO: Ya Agregado "."\n"); //ahora va el impuesto
+
+				$printer->text("--------\n");
+
+				$printer->text("TOTAL: $ ".number_format($_POST["totalVenta"],2)."\n"); //ahora va el total
+
+				$printer -> feed(1); //Alimentamos el papel 1 vez*/	
+
+				$printer->text("Muchas gracias por su compra"); //Podemos poner también un pie de página
+
+				$printer -> feed(3); //Alimentamos el papel 3 veces*/
+
+				$printer -> cut(); //Cortamos el papel, si la impresora tiene la opción
+
+				$printer -> pulse(); //Por medio de la impresora mandamos un pulso, es útil cuando hay cajón moneder
+
+				$printer -> close();
+
+
+				echo'<script>
+
+				localStorage.removeItem("rango");
+
+				swal({
+					  type: "success",
+					  title: "La venta ha sido editada correctamente",
+					  showConfirmButton: true,
+					  confirmButtonText: "Cerrar"
+					  }).then((result) => {
+								if (result.value) {
+
+								window.open("extensiones/tcpdf/pdf/factura.php?codigo="+'.$_POST["editarVenta"].', "_blank");
+								window.location = "ventas";
+
+								}
+							})
+
+				</script>';
+				}else if ($_POST["ticket"]) {
 
 				$impresora = "epsontm";
 
@@ -469,6 +719,48 @@ class ControladorVentas{
 							})
 
 				</script>';
+				} else if ($_POST["pdf"]) {
+
+				echo'<script>
+
+				localStorage.removeItem("rango");
+
+				swal({
+					  type: "success",
+					  title: "La venta ha sido editada correctamente",
+					  showConfirmButton: true,
+					  confirmButtonText: "Cerrar"
+					  }).then((result) => {
+								if (result.value) {
+
+								window.open("extensiones/tcpdf/pdf/factura.php?codigo="+'.$_POST["editarVenta"].', "_blank");
+								window.location = "ventas";
+
+								}
+							})
+
+				</script>';
+				}else {
+
+				echo'<script>
+
+				localStorage.removeItem("rango");
+
+				swal({
+					  type: "success",
+					  title: "La venta ha sido editada correctamente",
+					  showConfirmButton: true,
+					  confirmButtonText: "Cerrar"
+					  }).then((result) => {
+								if (result.value) {
+
+								window.location = "ventas";
+
+								}
+							})
+
+				</script>';
+				}
 
 			}
 
@@ -608,6 +900,7 @@ class ControladorVentas{
 					  }).then((result) => {
 								if (result.value) {
 
+								window.open("extensiones/tcpdf/pdf/factura.php?codigo="+codigoVenta, "_blank");
 								window.location = "ventas";
 
 								}
@@ -686,7 +979,8 @@ class ControladorVentas{
 					<td style='font-weight:bold; border:1px solid #eee;'>IMPUESTO</td>
 					<td style='font-weight:bold; border:1px solid #eee;'>NETO</td>		
 					<td style='font-weight:bold; border:1px solid #eee;'>TOTAL</td>		
-					<td style='font-weight:bold; border:1px solid #eee;'>METODO DE PAGO</td	
+					<td style='font-weight:bold; border:1px solid #eee;'>METODO DE PAGO</td>
+					<td style='font-weight:bold; border:1px solid #eee;'>TOTAL PAGADO</td>	
 					<td style='font-weight:bold; border:1px solid #eee;'>FECHA</td>		
 					</tr>");
 
@@ -721,6 +1015,7 @@ class ControladorVentas{
 					<td style='border:1px solid #eee;'>$ ".number_format($item["neto"],2)."</td>	
 					<td style='border:1px solid #eee;'>$ ".number_format($item["total"],2)."</td>
 					<td style='border:1px solid #eee;'>".$item["metodo_pago"]."</td>
+					<td style='border:1px solid #eee;'>$ ".number_format($item["total_pagado"],2)."</td>
 					<td style='border:1px solid #eee;'>".substr($item["fecha"],0,10)."</td>		
 		 			</tr>");
 
