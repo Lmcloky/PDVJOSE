@@ -31,7 +31,7 @@
                 <tr>
                   <th style="width: 10px;">#</th>
                   <th>Nombre De cliente</th>
-                  <th>Documento id</th>
+                  <th>CURP</th>
                   <th>Email</th>
                   <th>Telefono</th>
                   <th>Dirección</th>
@@ -130,7 +130,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"> <i class="fa fa-clipboard"></i> </span>
-                  <input type="number" min="0" class="form-control input-lg" name="nuevoDocumentoId" placeholder="Ingresar Documento" required="">
+                  <input type="text" class="form-control input-lg" name="nuevoDocumentoId" placeholder="Ingresar CURP" required="">
                 </div>
               </div>
 
@@ -227,7 +227,7 @@ MODAL EDITAR CLIENTE
             <div class="form-group">              
               <div class="input-group">              
                 <span class="input-group-addon"><i class="fa fa-key"></i></span> 
-                <input type="number" min="0" class="form-control input-lg" name="editarDocumentoId" id="editarDocumentoId" required>
+                <input type="text" class="form-control input-lg" name="editarDocumentoId" id="editarDocumentoId" required>
               </div>
             </div>
 
