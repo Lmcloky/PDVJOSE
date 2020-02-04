@@ -42,15 +42,24 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 								$printer -> text("Abono A Cuenta"."\n");//Teléfono de la empresa
 
 								$printer -> text("Cuenta N°.".$_POST["nuevoPago"]."\n");//Número de pago
+
+								$tablaVentas= "vetas";
+								$item = "id";
+								$valor = $_POST["nuevoPago"];
+
+								$traerCodigo = ModeloVentas::mdlMostrarVentas($tablaVentas, $item, $valor);
+
+								$printer -> text("Cuenta N°. ".$traerCodigo["codigo"]."\n");//Nombre del vendedor
+
 								$printer -> feed(1); //Alimentamos el papel 1 vez*/
 
 								$printer->setJustification(Printer::JUSTIFY_LEFT);
 
 								$printer -> text("Cantidad que se a abonado"."\n");
 
-									$printer->setJustification(Printer::JUSTIFY_LEFT);								
+								$printer->setJustification(Printer::JUSTIFY_LEFT);								
 
-									$printer->text("$ ".number_format($value["abono"],2)."\n");
+								$printer->text("$ ".number_format($_POST["abono"],2)."\n");
 
 								$printer -> feed(1); //Alimentamos el papel 1 vez*/			
 

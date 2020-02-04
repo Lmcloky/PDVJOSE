@@ -1,5 +1,4 @@
   <div class="content-wrapper">
-
     <section class="content-header">
       <h1>
         Crear Venta
@@ -13,27 +12,18 @@
     <section class="content">
       
       <div class="row">
-
         <!--==========================================
         =            LLENAR EL FORMULARIO            =
         ===========================================-->
-        <div class="col-lg-5 col-xs-12">
-          
-          <div class="box box-success">
-            
+        <div class="col-lg-5 col-xs-12">          
+          <div class="box box-success">           
             <div class="box-header with-border"> </div>
-
-            <form role="form" method="post" class="formularioVenta">
-  
+            <form role="form" method="post" class="formularioVenta">  
               <div class="box-body">
-    
                 <div class="box">
-
                   <!--==========================================
                   =            ENTRADA DEL VENDEDOR            =
-                  ===========================================-->
-                  
-                  
+                  ===========================================-->                                    
                   <div class="form-group">
                     
                     <div class="input-group">
@@ -43,77 +33,47 @@
                       <input type="hidden" name="idVendedor" value=" <?php echo $_SESSION["id"] ?> ">
                     </div>
                   </div>
-
                    <!--==========================================
                   =            ENTRADA DEl CODIGO DE VENTA            =
-                  ===========================================-->
-                  
-                  <div class="form-group">
-                    
-                    <div class="input-group">
-                      
+                  ===========================================-->                  
+                  <div class="form-group">                    
+                    <div class="input-group">                      
                       <span class="input-group-addon"><i class="fa fa-key"></i> </span>
-  
-                        <?php 
-
+                          <?php 
                           $item = null;
                           $valor = null;
                           $orden = "id";
 
                           $ventas = ControladorVentas::ctrMostrarVentas($item, $valor, $orden);
 
-                          if (!$ventas) {
-                            
+                          if (!$ventas) {                            
                             echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="100001" readonly>';
-
                           }else{
-
-                            foreach ($ventas as $key => $value) {
-                              
+                            foreach ($ventas as $key => $value) {                              
                             }
-
                             $codigo = $value["codigo"] + 1;
-
                             echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="'.$codigo.'" readonly>';
-
                           }
-
-
                          ?>
- 
-                    </div>
+                     </div>
                   </div>
-
                   <!--==========================================
                   =            ENTRADA DEL CLIENTE            =
-                  ===========================================-->
-                  
-                  
-                  <div class="form-group">
-                    
+                  ===========================================-->                  
+                  <div class="form-group">                    
                     <div class="input-group">
-
                       <span class="input-group-addon"><i class="fa fa-users"></i> </span>
-                      <select class="form-control" name="seleccionarCliente" id="seleccionarCliente" required>
+                      <select class="form-control select2"  name="seleccionarCliente" id="seleccionarCliente" required>
                         <option value="">Seleccionar Cliente</option>
-
                         <?php
-
                           $item = null;
                           $valor = null;
-
                           $clientes = ControladorClientes::ctrMostrarClientes($item, $valor);
-
                            foreach ($clientes as $key => $value) {
-
                              echo '<option value="'.$value["id"].'">'.$value["nombre"].'</option>';
-
                            }
-
                         ?>
-
                       </select>
-
                       <span class="input-group-addon"><button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalAgregarCliente" data-dismiss="modal">Agregar Cliente</button></span>
  
                     </div>
@@ -121,36 +81,23 @@
 
                   <!--==========================================
                   =            ENTRADA DEL PRODUCTO            =
-                  ===========================================-->
-                  
+                  ===========================================-->                  
                   <div class="form-group row nuevoProducto"> 
-
-                  </div>
-
-                    
-                    <input type="hidden" id="listaProductos" name="listaProductos">
-                      
+                  </div>                    
+                    <input type="hidden" id="listaProductos" name="listaProductos">                      
                       <!-- AGREGAR PRODUCTOS -->
                       <button type="button" class="btn btn-default hidden-lg btnAgregarProducto"> Agregar Productos</button>
-
                       <hr>
-
                       <div class="row">
-                        <div class="col-xs-8 pull-right">
-                          
-                          <table class="table">
-                            
-                            <thead>
-                              
+                        <div class="col-xs-8 pull-right">                          
+                          <table class="table">                            
+                            <thead>                              
                               <tr>
                                 <th>Descuento</th>
                                 <th>Total</th>
                               </tr>
-
                             </thead>
-
-                            <tbody>
-                              
+                            <tbody>                              
                               <tr>
                                 <td style="width: 50%">
                                   <div class="input-group">
@@ -162,32 +109,25 @@
 
                                   </div>
                                 </td>
-                                <td style="width: 50%">
-                                  
+                                <td style="width: 50%">                                  
                                   <div class="input-group">
                                     
                                     <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
                                     <input type="text" class="form-control input-lg" min="0" id="nuevoTotalVenta" name="nuevoTotalVenta" total="" placeholder="00000" readonly required>
 
                                     <input type="hidden" name="totalVenta" id="totalVenta">
-
                                   </div>
-
                                 </td>
                               </tr>
-
                             </tbody>
                           </table>
                         </div>
                       </div>
                       <hr>
-
                       <!--==========================================
                       =            FORMA DE PAGO            =
                       ===========================================-->
-
                       <div class="form-group row">
-
                         <div class="col-xs-4" style="padding-right: 0px;">
                           <div class="input-group">
                             <select class="form-control" id="nuevoMetodoPago" name="nuevoMetodoPago" required>
@@ -199,17 +139,11 @@
                             </select>
                           </div>
                         </div>
-
-                        <div class="cajasMetodoPago">
-                          
+                        <div class="cajasMetodoPago">                          
                         </div>
-
                         <input type="hidden" id="listaMetodoPago" name="listaMetodoPago">
-
                       </div>
-
                       <!-- CHECKBOX PARA PORCENTAJE -->
-
                       <div class="col-xs-2">                    
                         <div class="form-group">           
                           <label>                        
@@ -230,38 +164,26 @@
                       <hr>
                   <br>
                 </div>
-
               </div>
               
-              <div class="box-footer">
-                
+              <div class="box-footer">                
                 <button type="submit" class="btn btn-primary pull-right">Guardar Venta</button>
-
               </div>
 
             </form>
-
             <?php 
-
               $guardarVenta = new ControladorVentas();
               $guardarVenta -> ctrCrearVenta();
-
              ?>
-
           </div>
-
         </div>
-
         <!--======================================================================================================================
         =                                              TABLA DE PRODUCTOS                                                      =
         =======================================================================================================================-->
-        <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">
-          
-          <div class="box box-warning">
-            
+        <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12">          
+          <div class="box box-warning">            
             <div class="box-header with-border"> </div>
-            <div class="box-body">
-              
+            <div class="box-body">              
               <table class="table table-bordered table-striped dt-responsive tablaVentas">
                 <thead>
                   <tr>
@@ -273,30 +195,10 @@
                     <td>Acciones</td>
                   </tr>
                 </thead>
-                
-               <!--  <tbody>
-                
-                <tr>
-                  <td>1</td>
-                  <td> <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="40px"> </td>
-                  <td>0000001</td>
-                  <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </td>
-                  <td>20</td>
-                  <td>
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-primary"> Agregar </button>
-                    </div>
-                  </td>
-                </tr>
-
-              </tbody> -->
               </table>
-
             </div>
           </div>
         </div>
-
-
       </div>
     </section>
   </div>

@@ -112,7 +112,7 @@
               <div class="input-group">              
                 <span class="input-group-addon"><i class="fa fa-chain"></i></span> 
 
-                <select class="form-control input-lg" id="nuevoPago" name="nuevoPago" required>
+                <select class="form-control input-lg select2" style="width: 100%; height: 300px;" id="nuevoPago" name="nuevoPago" required>
                   
                   <option value="">Selecionar código de venta</option>
 
@@ -156,7 +156,7 @@
                         <!-- <div class="col-xs-4" style="padding-right: 0px;"> -->
                           <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-usd"></i></span> 
-                            <select class="form-control input-lg" id="metodoPago" name="metodoPago" required>
+                            <select class="form-control select2 input-lg" style="width: 100%" id="metodoPago" name="metodoPago" required>
                               <option value="">Seleccione método de pago</option>
                               <option value="Efectivo">Efectivo</option>
                               <option value="TC">Tarjeta de Crédito</option>

@@ -283,7 +283,7 @@ $(".btnAgregarProducto").click(function(){
 	              
 	              '<span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarProducto" idProducto><i class="fa fa-times"></i></button></span>'+
 
-	              '<select class="form-control nuevaDescripcionProducto" id="producto'+numProducto+'" idProducto name="nuevaDescripcionProducto" required>'+
+	              '<select class="form-control select2 nuevaDescripcionProducto" id="producto'+numProducto+'" idProducto name="nuevaDescripcionProducto" required>'+
 
 	              '<option>Seleccione el producto</option>'+
 
