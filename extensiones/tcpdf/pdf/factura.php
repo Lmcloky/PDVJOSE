@@ -119,10 +119,10 @@ if ($estado != 1) {
 	$bloque2 = <<<EOF
 	<table style="font-size:8px; padding:1px ;">	
 		<tr>		
-			<td style=" background-color:white; width:190px; face:times">
-				Cliente: <b> $respuestaCliente[nombre] </b>
+			<td style=" background-color:white; width:240px; face:times">
+				Cliente: <b> $respuestaCliente[nombre]  </b> *** $respuestaVenta[nombre]
 			</td>
-			<td style=" background-color:white; width:150px; text-align:center; color:red">
+			<td style=" background-color:white; width:100px; text-align:center; color:red">
 			Venta N° $valorVenta
 			</td>
 			<td style=" background-color:white; width:150px; text-align:right;">
@@ -130,8 +130,8 @@ if ($estado != 1) {
 			</td>
 		</tr>
 		<tr>		
-			<td style=" background-color:white; width:190px">Vendedor: $respuestaVendedor[nombre]</td>
-			<td style=" background-color:white; width:150px; text-align:center">			
+			<td style=" background-color:white; width:240px">Vendedor: $respuestaVendedor[nombre]</td>
+			<td style=" background-color:white; width:100px; text-align:center">			
 				Fecha: $fecha
 			</td>
 
@@ -153,10 +153,10 @@ $pdf->writeHTML($bloque2, false, false, false, false, '');
 	$bloque2 = <<<EOF
 	<table style="font-size:8px; padding:1px ;">	
 		<tr>		
-			<td style=" background-color:white; width:190px; face:times">
-				Cliente: <b> $respuestaCliente[nombre] </b>
+			<td style=" background-color:white; width:240px; face:times">
+				Cliente: <b> $respuestaCliente[nombre] </b> *** $respuestaVenta[nombre]
 			</td>
-			<td style=" background-color:white; width:150px; text-align:center; color:red">
+			<td style=" background-color:white; width:100px; text-align:center; color:red">
 			Venta N° $valorVenta
 			</td>
 			<td style=" background-color:white; width:150px; text-align:right;">
@@ -164,8 +164,8 @@ $pdf->writeHTML($bloque2, false, false, false, false, '');
 			</td>
 		</tr>
 		<tr>		
-			<td style=" background-color:white; width:190px">Vendedor: $respuestaVendedor[nombre]</td>
-			<td style=" background-color:white; width:150px; text-align:center">			
+			<td style=" background-color:white; width:240px">Vendedor: $respuestaVendedor[nombre]</td>
+			<td style=" background-color:white; width:100px; text-align:center">			
 				Fecha: $fecha
 			</td>
 
@@ -335,10 +335,10 @@ if ($estado != 1) {
 	$bloque2 = <<<EOF
 	<table style="font-size:8px; padding:1px ;">	
 		<tr>		
-			<td style=" background-color:white; width:190px; face:times">
-				Cliente: <b> $respuestaCliente[nombre] </b>
+			<td style=" background-color:white; width:240px; face:times">
+				Cliente: <b> $respuestaCliente[nombre] </b> *** $respuestaVenta[nombre]
 			</td>
-			<td style=" background-color:white; width:150px; text-align:center; color:red">
+			<td style=" background-color:white; width:100px; text-align:center; color:red">
 			Venta N° $valorVenta
 			</td>
 			<td style=" background-color:white; width:150px; text-align:right;">
@@ -346,8 +346,8 @@ if ($estado != 1) {
 			</td>
 		</tr>
 		<tr>		
-			<td style=" background-color:white; width:190px">Vendedor: $respuestaVendedor[nombre]</td>
-			<td style=" background-color:white; width:150px; text-align:center">			
+			<td style=" background-color:white; width:240px">Vendedor: $respuestaVendedor[nombre]</td>
+			<td style=" background-color:white; width:100px; text-align:center">			
 				Fecha: $fecha
 			</td>
 
@@ -369,10 +369,10 @@ $pdf->writeHTML($bloque2, false, false, false, false, '');
 	$bloque2 = <<<EOF
 	<table style="font-size:8px; padding:1px ;">	
 		<tr>		
-			<td style=" background-color:white; width:190px; face:times">
-				Cliente: <b> $respuestaCliente[nombre] </b>
+			<td style=" background-color:white; width:240px; face:times">
+				Cliente: <b> $respuestaCliente[nombre] </b> *** $respuestaVenta[nombre]
 			</td>
-			<td style=" background-color:white; width:150px; text-align:center; color:red">
+			<td style=" background-color:white; width:100px; text-align:center; color:red">
 			Venta N° $valorVenta
 			</td>
 			<td style=" background-color:white; width:150px; text-align:right;">
@@ -380,8 +380,8 @@ $pdf->writeHTML($bloque2, false, false, false, false, '');
 			</td>
 		</tr>
 		<tr>		
-			<td style=" background-color:white; width:190px">Vendedor: $respuestaVendedor[nombre]</td>
-			<td style=" background-color:white; width:150px; text-align:center">			
+			<td style=" background-color:white; width:240px">Vendedor: $respuestaVendedor[nombre]</td>
+			<td style=" background-color:white; width:100px; text-align:center">			
 				Fecha: $fecha
 			</td>
 

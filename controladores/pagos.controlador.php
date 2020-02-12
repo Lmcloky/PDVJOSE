@@ -43,7 +43,7 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 
 								$printer -> text("Cuenta N°.".$_POST["nuevoPago"]."\n");//Número de pago
 
-								$tablaVentas= "vetas";
+								$tablaVentas= "ventas";
 								$item = "id";
 								$valor = $_POST["nuevoPago"];
 

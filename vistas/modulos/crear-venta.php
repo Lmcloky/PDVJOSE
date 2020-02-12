@@ -78,6 +78,15 @@
  
                     </div>
                   </div>
+                  
+                    <!-- ENTRADA PARA LA DESCRIPCIÓN -->
+
+                   <div class="form-group">              
+                    <div class="input-group">              
+                      <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span> 
+                      <input type="text" class="form-control" name="nombre" placeholder="Nombre Opcional">
+                    </div>
+                  </div>
 
                   <!--==========================================
                   =            ENTRADA DEL PRODUCTO            =

@@ -99,6 +99,7 @@ class ControladorVentas{
 
 			$datos = array("id_vendedor"=>$_POST["idVendedor"],
 						   "id_cliente"=>$_POST["seleccionarCliente"],
+						   "nombre"=>$_POST["nombre"],
 						   "codigo"=>$_POST["nuevaVenta"],
 						   "productos"=>$_POST["listaProductos"],
 						   "impuesto"=>$_POST["nuevoPrecioImpuesto"],
@@ -150,7 +151,15 @@ class ControladorVentas{
 				$printer -> feed(1); //Alimentamos el papel 1 vez*/
 
 				$printer -> text("Cliente: ".$traerCliente["nombre"]."\n");//Nombre del cliente
+				//////////
+				// gggf //
+				//////////
 
+				$printer -> text("Nombre Opcional".$_POST["nombre"]."\n");//Número de factura
+
+				//////////
+				// gggf //
+				//////////
 				$tablaVendedor = "usuarios";
 				$item = "id";
 				$valor = $_POST["idVendedor"];
