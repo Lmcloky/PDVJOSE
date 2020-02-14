@@ -119,20 +119,20 @@ if ($estado != 1) {
 	$bloque2 = <<<EOF
 	<table style="font-size:8px; padding:1px ;">	
 		<tr>		
-			<td style=" background-color:white; width:240px; face:times">
+			<td style=" background-color:white; width:270px; face:times">
 				Cliente: <b> $respuestaCliente[nombre]  </b> *** $respuestaVenta[nombre]
 			</td>
-			<td style=" background-color:white; width:100px; text-align:center; color:red">
-			Venta N° $valorVenta
+			<td style=" background-color:white; width:70px; text-align:right; color:red">
+			<b> Venta N° $valorVenta </b> 
 			</td>
 			<td style=" background-color:white; width:150px; text-align:right;">
 			Estado de la venta
 			</td>
 		</tr>
 		<tr>		
-			<td style=" background-color:white; width:240px">Vendedor: $respuestaVendedor[nombre]</td>
-			<td style=" background-color:white; width:100px; text-align:center">			
-				Fecha: $fecha
+			<td style=" background-color:white; width:120px">Vendedor: $respuestaVendedor[nombre]</td>
+			<td style=" background-color:white; width:220px; text-align:left">			
+				Destino: $respuestaVenta[destino]
 			</td>
 
 			<td style=" background-color:white; width:150px; text-align:right; color:red">
@@ -153,20 +153,20 @@ $pdf->writeHTML($bloque2, false, false, false, false, '');
 	$bloque2 = <<<EOF
 	<table style="font-size:8px; padding:1px ;">	
 		<tr>		
-			<td style=" background-color:white; width:240px; face:times">
+			<td style=" background-color:white; width:270px; face:times">
 				Cliente: <b> $respuestaCliente[nombre] </b> *** $respuestaVenta[nombre]
 			</td>
-			<td style=" background-color:white; width:100px; text-align:center; color:red">
-			Venta N° $valorVenta
+			<td style=" background-color:white; width:70px; text-align:center; color:red">
+			<b> Venta N° $valorVenta</b> 
 			</td>
 			<td style=" background-color:white; width:150px; text-align:right;">
 			Estado de la venta
 			</td>
 		</tr>
 		<tr>		
-			<td style=" background-color:white; width:240px">Vendedor: $respuestaVendedor[nombre]</td>
-			<td style=" background-color:white; width:100px; text-align:center">			
-				Fecha: $fecha
+			<td style=" background-color:white; width:120px">Vendedor: $respuestaVendedor[nombre]</td>
+			<td style=" background-color:white; width:220px; text-align:left">			
+				Destino: $respuestaVenta[destino]
 			</td>
 
 			<td style=" background-color:white; width:150px; text-align:right; color:GREEN">
@@ -257,7 +257,8 @@ $bloque5 = <<<EOF
 	<table style="font-size:8px; padding:3px;">
 
 		<tr>
-		<td style=" color:#333; background-color:white; width:50px; text-align:center">
+		<td style=" background-color:white; width:80px; text-align:center">			
+				Fecha: $fecha
 			</td>		
 			<td style=" color:#333; background-color:white; width:300px; text-align:center">
 				($totalLetras )
@@ -284,7 +285,7 @@ $bloque5 = <<<EOF
 			</td>
 		</tr>
 	</table>
-	<br><br>
+	
 EOF;
 $pdf->writeHTML($bloque5, false, false, false, false, '');
 /*====================================================================================================================
@@ -335,20 +336,20 @@ if ($estado != 1) {
 	$bloque2 = <<<EOF
 	<table style="font-size:8px; padding:1px ;">	
 		<tr>		
-			<td style=" background-color:white; width:240px; face:times">
-				Cliente: <b> $respuestaCliente[nombre] </b> *** $respuestaVenta[nombre]
+			<td style=" background-color:white; width:270px; face:times">
+				Cliente: <b> $respuestaCliente[nombre]  </b> *** $respuestaVenta[nombre]
 			</td>
-			<td style=" background-color:white; width:100px; text-align:center; color:red">
-			Venta N° $valorVenta
+			<td style=" background-color:white; width:70px; text-align:right; color:red">
+			<b> Venta N° $valorVenta </b> 
 			</td>
 			<td style=" background-color:white; width:150px; text-align:right;">
 			Estado de la venta
 			</td>
 		</tr>
 		<tr>		
-			<td style=" background-color:white; width:240px">Vendedor: $respuestaVendedor[nombre]</td>
-			<td style=" background-color:white; width:100px; text-align:center">			
-				Fecha: $fecha
+			<td style=" background-color:white; width:120px">Vendedor: $respuestaVendedor[nombre]</td>
+			<td style=" background-color:white; width:220px; text-align:left">			
+				Destino: $respuestaVenta[destino]
 			</td>
 
 			<td style=" background-color:white; width:150px; text-align:right; color:red">
@@ -369,20 +370,20 @@ $pdf->writeHTML($bloque2, false, false, false, false, '');
 	$bloque2 = <<<EOF
 	<table style="font-size:8px; padding:1px ;">	
 		<tr>		
-			<td style=" background-color:white; width:240px; face:times">
+			<td style=" background-color:white; width:270px; face:times">
 				Cliente: <b> $respuestaCliente[nombre] </b> *** $respuestaVenta[nombre]
 			</td>
-			<td style=" background-color:white; width:100px; text-align:center; color:red">
-			Venta N° $valorVenta
+			<td style=" background-color:white; width:70px; text-align:center; color:red">
+			<b> Venta N° $valorVenta</b> 
 			</td>
 			<td style=" background-color:white; width:150px; text-align:right;">
 			Estado de la venta
 			</td>
 		</tr>
 		<tr>		
-			<td style=" background-color:white; width:240px">Vendedor: $respuestaVendedor[nombre]</td>
-			<td style=" background-color:white; width:100px; text-align:center">			
-				Fecha: $fecha
+			<td style=" background-color:white; width:120px">Vendedor: $respuestaVendedor[nombre]</td>
+			<td style=" background-color:white; width:220px; text-align:left">			
+				Destino: $respuestaVenta[destino]
 			</td>
 
 			<td style=" background-color:white; width:150px; text-align:right; color:GREEN">
@@ -473,7 +474,8 @@ $bloque5 = <<<EOF
 	<table style="font-size:8px; padding:3px;">
 
 		<tr>
-		<td style=" color:#333; background-color:white; width:50px; text-align:center">
+		<td style=" background-color:white; width:80px; text-align:center">			
+				Fecha: $fecha
 			</td>		
 			<td style=" color:#333; background-color:white; width:300px; text-align:center">
 				($totalLetras )
@@ -488,6 +490,29 @@ $bloque5 = <<<EOF
 	</table>
 EOF;
 $pdf->writeHTML($bloque5, false, false, false, false, '');
+
+$pdf->SetFont('times', '', 5);
+
+$bloque13 = <<<EOF
+
+	<table style="font-size:5.5px;">
+
+		<tr>
+		<br>
+			<td style="background-color:white; width:400px; text-align:center">
+			<br>
+				DEBO Y PAGARE INCONDICIONALMENTEA LA ORDEN DE ____________________________________, LA CANTIDAD AMPARADA EN LA PRESENTE ORDEN DE ENTREGA, 
+				DE NO SER PAGADA A SU VENCIMIENTO CAUSARA INTERESES MORATORIO A RAZON DEL 5% MENSUAL SIN QUE POR ELLO SE CONSIDERE PRORROGADO EL PLAZO.
+			</td>
+			<td style="background-color:white; width:120px; text-align:left">
+				
+				<br> <br> <br> Nombre y Firma_________________________
+			</td>
+		</tr>
+	</table>
+	
+EOF;
+$pdf->writeHTML($bloque13, false, false, false, false, '');
 /*====================================================================================================================
 =            **************************************BLOQUE 1 CABEZERA*************************************            =
 ====================================================================================================================*/
@@ -515,6 +540,31 @@ $pdf->StartTransform();
 $pdf->Rotate(90, 146, 186);
 $pdf->Rect(70, 44, 70, 4, 'D');
 $pdf->Text(72, 44, 'Total Abonado:  $'.$totalpagado.' MXN.  Resta: $'.$resta.' MXN.');
+// Stop Transformation
+$pdf->StopTransform();
+$pdf->SetDrawColor(0);
+$pdf->SetTextColor(0);
+
+/*====================================================================================================================
+=            **************************************BLOQUE 1 CABEZERA*************************************            =
+====================================================================================================================*/
+
+$pdf->SetFont('times', '', 6);
+$pdf->SetTextColor(150);
+$pdf->SetDrawColor(150);
+$pdf->StartTransform();
+$pdf->Rotate(270, 145, 105);
+$pdf->Text(72, 44, 'PRECIOS SUJETOS A CAMBIO SIN PREVIO AVISO DE ACUERDO A LA ALZA DE PRECIOS');
+// Stop Transformation
+$pdf->StopTransform();
+$pdf->SetDrawColor(0);
+$pdf->SetTextColor(0);
+$pdf->SetTextColor(150);
+$pdf->SetDrawColor(150);
+$pdf->StartTransform();
+$pdf->Rotate(270, 80, 170);
+
+$pdf->Text(72, 44, 'PRECIOS SUJETOS A CAMBIO SIN PREVIO AVISO DE ACUERDO A LA ALZA DE PRECIOS');
 // Stop Transformation
 $pdf->StopTransform();
 $pdf->SetDrawColor(0);

@@ -25,3 +25,9 @@ $(document).on("click", ".btnEliminarPago", function(){
 	})
 
 })
+
+$(document).on("click", ".btnImprimirAdeudos", function(){
+
+	window.open("extensiones/tcpdf/pdf/adeudos.php", "_blank");
+
+})

@@ -23,8 +23,13 @@
             
             Agregar Pago
           </button>
-          
+
+          <button class="btn btn-success btnImprimirAdeudos" style="float: right;"> Reporte de Adeudos
+
+          </button>
+
         </div>
+
         <div class="box-body">
             
             <table class="table table-bordered table-striped dt-responsive tablas">

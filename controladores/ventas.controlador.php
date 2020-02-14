@@ -100,6 +100,7 @@ class ControladorVentas{
 			$datos = array("id_vendedor"=>$_POST["idVendedor"],
 						   "id_cliente"=>$_POST["seleccionarCliente"],
 						   "nombre"=>$_POST["nombre"],
+						   "destino"=>$_POST["destino"],
 						   "codigo"=>$_POST["nuevaVenta"],
 						   "productos"=>$_POST["listaProductos"],
 						   "impuesto"=>$_POST["nuevoPrecioImpuesto"],
@@ -156,6 +157,7 @@ class ControladorVentas{
 				//////////
 
 				$printer -> text("Nombre Opcional".$_POST["nombre"]."\n");//Número de factura
+				// $printer -> text("Lugar de Destino ".$_POST["destino"]."\n");//Número de factura
 
 				//////////
 				// gggf //
@@ -257,6 +259,11 @@ class ControladorVentas{
 				$printer -> feed(1); //Alimentamos el papel 1 vez*/
 
 				$printer -> text("Cliente: ".$traerCliente["nombre"]."\n");//Nombre del cliente
+
+
+				$printer -> text("Nombre Opcional".$_POST["nombre"]."\n");//Número de factura
+				// $printer -> text("Lugar de Destino".$_POST["destino"]."\n");//Número de factura
+
 
 				$tablaVendedor = "usuarios";
 				$item = "id";
@@ -520,6 +527,8 @@ class ControladorVentas{
 
 			$datos = array("id_vendedor"=>$_POST["idVendedor"],
 						   "id_cliente"=>$_POST["seleccionarCliente"],
+						   "nombre"=>$_POST["editarNombre"],
+						   "destino"=>$_POST["editarDestino"],
 						   "codigo"=>$_POST["editarVenta"],
 						   "productos"=>$listaProductos,
 						   "impuesto"=>$_POST["nuevoPrecioImpuesto"],
@@ -562,6 +571,9 @@ class ControladorVentas{
 				$printer -> feed(1); //Alimentamos el papel 1 vez*/
 
 				$printer -> text("Cliente: ".$traerCliente_2["nombre"]."\n");//Nombre del cliente
+
+				$printer -> text("Nombre Opcional".$_POST["editarNombre"]."\n");//Número de factura
+				// $printer -> text("Lugar de Destino".$_POST["destino"]."\n");//Número de factura
 
 				$tablaVendedor = "usuarios";
 				$item = "id";
@@ -659,6 +671,9 @@ class ControladorVentas{
 				$printer -> feed(1); //Alimentamos el papel 1 vez*/
 
 				$printer -> text("Cliente: ".$traerCliente_2["nombre"]."\n");//Nombre del cliente
+
+				$printer -> text("Nombre Opcional".$_POST["editarNombre"]."\n");//Número de factura
+				// $printer -> text("Lugar de Destino".$_POST["destino"]."\n");//Número de factura
 
 				$tablaVendedor = "usuarios";
 				$item = "id";

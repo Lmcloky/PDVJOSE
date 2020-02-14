@@ -81,6 +81,14 @@ class ControladorClientes{
 
 		return $respuesta;
 	}
+	static public function ctrMostrarClientesOrden($item, $valor){
+
+		$tabla = "clientes";
+		$respuesta = ModeloClientes::mdlMostrarClientesOrden($tabla, $item, $valor);
+
+		return $respuesta;
+	}
+
 
 	/*=============================================
 	EDITAR CLIENTE

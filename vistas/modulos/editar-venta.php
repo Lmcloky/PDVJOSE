@@ -131,6 +131,22 @@ if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor"){
                     </div>
                   </div>
 
+                  <div class="form-group">              
+                    <div class="input-group">              
+                      <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span> 
+                      <input type="text" class="form-control" name="editarNombre" value="<?php echo $venta["nombre"] ?>">
+                    </div>
+                  </div>
+
+                   <!-- ENTRADA PARA LA DESCRIPCIÓN DE DESTINO -->
+
+                   <div class="form-group">              
+                    <div class="input-group">              
+                      <span class="input-group-addon"><i class="fa fa-truck"></i></span> 
+                      <input type="text" class="form-control" name="editarDestino" value="<?php echo $venta["destino"] ?>">
+                    </div>
+                  </div>
+
                   <!--==========================================
                   =            ENTRADA DEL PRODUCTO            =
                   ===========================================-->

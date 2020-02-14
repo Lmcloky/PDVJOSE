@@ -88,6 +88,15 @@
                     </div>
                   </div>
 
+                   <!-- ENTRADA PARA LA DESCRIPCIÓN DE DESTINO -->
+
+                   <div class="form-group">              
+                    <div class="input-group">              
+                      <span class="input-group-addon"><i class="fa fa-truck"></i></span> 
+                      <input type="text" class="form-control" name="destino" placeholder="Ingresar el lugar de destino">
+                    </div>
+                  </div>
+
                   <!--==========================================
                   =            ENTRADA DEL PRODUCTO            =
                   ===========================================-->                  
