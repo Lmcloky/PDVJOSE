@@ -118,7 +118,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
 
 			  '<!-- Descripción del producto -->'+
 	          
-	          '<div class="col-xs-6" style="padding-right:0px">'+
+	          '<div class="col-xs-5" style="padding-right:0px">'+
 	          
 	            '<div class="input-group">'+
 	              
@@ -132,9 +132,17 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
 
 	          '<!-- Cantidad del producto -->'+
 
-	          '<div class="col-xs-3">'+
+	          '<div class="col-xs-2">'+
 	            
 	             '<input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" step="any" value="1" stock="'+stock+'" nuevoStock="'+Number(stock-1)+'" required>'+
+
+	          '</div>' +
+
+	          '<!-- Cantidad del producto -->'+
+
+	          '<div class="col-xs-2">'+
+	            
+	             '<input type="number" class="form-control nuevoPrecioAgregado" name="nuevoPrecioAgregado" step="any" value="'+precio+'" precioReal="'+precio+'" nuevoPrecio="'+Number(precio)+'" required>'+
 
 	          '</div>' +
 
@@ -146,7 +154,7 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
 
 	              '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
 	                 
-	              '<input type="text" class="form-control nuevoPrecioProducto" precioReal="'+precio+'" name="nuevoPrecioProducto" value="'+precio+'"  required>'+
+	              '<input type="text" class="form-control nuevoPrecioProducto" name="nuevoPrecioProducto" value="'+precio+'" readonly required>'+
 	 
 	            '</div>'+
 	             
@@ -372,55 +380,108 @@ $(".btnAgregarProducto").click(function(){
 SELECCIONAR PRODUCTO
 =============================================*/
 
-$(".formularioVenta").on("change", "select.nuevaDescripcionProducto", function(){
+// $(".formularioVenta").on("change", "select.nuevaDescripcionProducto", function(){
 
-	var nombreProducto = $(this).val();
+// 	var nombreProducto = $(this).val();
 
-	var nuevaDescripcionProducto = $(this).parent().parent().parent().children().children().children(".nuevaDescripcionProducto");
+// 	var nuevaDescripcionProducto = $(this).parent().parent().parent().children().children().children(".nuevaDescripcionProducto");
 
-	var nuevoPrecioProducto = $(this).parent().parent().parent().children(".ingresoPrecio").children().children(".nuevoPrecioProducto");
+// 	var nuevoPrecioProducto = $(this).parent().parent().parent().children(".ingresoPrecio").children().children(".nuevoPrecioProducto");
 
-	var nuevaCantidadProducto = $(this).parent().parent().parent().children(".ingresoCantidad").children(".nuevaCantidadProducto");
+// 	var nuevaCantidadProducto = $(this).parent().parent().parent().children(".ingresoCantidad").children(".nuevaCantidadProducto");
 
-	var datos = new FormData();
-    datos.append("nombreProducto", nombreProducto);
+// 	var datos = new FormData();
+//     datos.append("nombreProducto", nombreProducto);
 
 
-	  $.ajax({
+// 	  $.ajax({
 
-     	url:"ajax/productos.ajax.php",
-      	method: "POST",
-      	data: datos,
-      	cache: false,
-      	contentType: false,
-      	processData: false,
-      	dataType:"json",
-      	success:function(respuesta){
+//      	url:"ajax/productos.ajax.php",
+//       	method: "POST",
+//       	data: datos,
+//       	cache: false,
+//       	contentType: false,
+//       	processData: false,
+//       	dataType:"json",
+//       	success:function(respuesta){
       	    
-      	    $(nuevaDescripcionProducto).attr("idProducto", respuesta["id"]);
-      	    $(nuevaCantidadProducto).attr("stock", respuesta["stock"]);
-      	    $(nuevaCantidadProducto).attr("nuevoStock", Number(respuesta["stock"])-1);
-      	    $(nuevoPrecioProducto).val(respuesta["precio_venta"]);
-      	    $(nuevoPrecioProducto).attr("precioReal", respuesta["precio_venta"]);
+//       	    $(nuevaDescripcionProducto).attr("idProducto", respuesta["id"]);
+//       	    $(nuevaCantidadProducto).attr("stock", respuesta["stock"]);
+//       	    $(nuevaCantidadProducto).attr("nuevoStock", Number(respuesta["stock"])-1);
+//       	    $(nuevoPrecioProducto).val(respuesta["precio_venta"]);
+//       	    $(nuevoPrecioProducto).attr("precioReal", respuesta["precio_venta"]);
 
-  	      // AGRUPAR PRODUCTOS EN FORMATO JSON
+//   	      // AGRUPAR PRODUCTOS EN FORMATO JSON
 
-	        listarProductos()
+// 	        listarProductos()
 
-      	}
+//       	}
 
-      })
-})
+//       })
+// })
 
 /*=============================================
 MODIFICAR LA CANTIDAD
 =============================================*/
+$(".formularioVenta").on("change", "input.nuevoPrecioAgregado", function(){
+
+	var precio = $(this).parent().parent().children(".ingresoPrecio").children().children(".nuevoPrecioProducto");
+	var precio1 = $(this).parent().parent().children().children(".nuevaCantidadProducto");
+
+	var precioFinal = $(this).val() * precio1.val();
+	 
+	
+	precio.val(precioFinal);
+
+	var nuevoStock = Number($(this).attr("stock")) - $(this).val();
+
+	$(this).attr("nuevoStock", nuevoStock);
+
+	if(Number($(this).val()) > Number($(this).attr("stock"))){
+
+		// =============================================
+		// SI LA CANTIDAD ES SUPERIOR AL STOCK REGRESAR VALORES INICIALES
+		// =============================================
+
+		$(this).val(1);
+
+		var precioFinal = $(this).val() * precio.attr("precioReal");
+
+		precio.val(precioFinal);
+
+		sumarTotalPrecios();
+
+		swal({
+	      title: "La cantidad supera el Stock",
+	      text: "¡Sólo hay "+$(this).attr("stock")+" unidades!",
+	      type: "error",
+	      confirmButtonText: "¡Cerrar!"
+	    });
+
+	    return;
+
+	}
+
+	// SUMAR TOTAL DE PRECIOS
+
+	sumarTotalPrecios()
+
+	// AGREGAR IMPUESTO
+	        
+    agregarImpuesto()
+
+    // AGRUPAR PRODUCTOS EN FORMATO JSON
+
+    listarProductos()
+
+})
 
 $(".formularioVenta").on("change", "input.nuevaCantidadProducto", function(){
 
 	var precio = $(this).parent().parent().children(".ingresoPrecio").children().children(".nuevoPrecioProducto");
+	var precio1 = $(this).parent().parent().children().children(".nuevoPrecioAgregado");
 
-	var precioFinal = $(this).val() * precio.attr("precioReal");
+	var precioFinal = $(this).val() * precio1.val();
 	
 	precio.val(precioFinal);
 
@@ -639,6 +700,8 @@ function listarProductos(){
 
 	var cantidad = $(".nuevaCantidadProducto");
 
+	var precio1 = $(".nuevoPrecioAgregado");
+
 	var precio = $(".nuevoPrecioProducto");
 
 	for(var i = 0; i < descripcion.length; i++){
@@ -647,7 +710,7 @@ function listarProductos(){
 							  "descripcion" : $(descripcion[i]).val(),
 							  "cantidad" : $(cantidad[i]).val(),
 							  "stock" : $(cantidad[i]).attr("nuevoStock"),
-							  "precio" : $(precio[i]).attr("precioReal"),
+							  "precio" : $(precio1[i]).val(),
 							  "total" : $(precio[i]).val()})
 
 	}
