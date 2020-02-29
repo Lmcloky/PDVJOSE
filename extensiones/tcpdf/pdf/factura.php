@@ -23,7 +23,7 @@ public function traerImpresionFactura(){
 
 //TRAEMOS LA INFORMACION DE LA VENTA
 
-$itemVenta = "codigo";
+$itemVenta = "id";
 $valorVenta = $this->codigo;
 
 $respuestaVenta = ControladorVentas::ctrMostrarVentas($itemVenta, $valorVenta);
@@ -123,7 +123,7 @@ if ($estado != 1) {
 				Cliente: <b> $respuestaCliente[nombre]  </b> *** $respuestaVenta[nombre]
 			</td>
 			<td style=" background-color:white; width:70px; text-align:right; color:red">
-			<b> Venta N° $valorVenta </b> 
+			<b> Venta N° $respuestaVenta[codigo] </b> 
 			</td>
 			<td style=" background-color:white; width:150px; text-align:right;">
 			Estado de la venta
@@ -157,7 +157,7 @@ $pdf->writeHTML($bloque2, false, false, false, false, '');
 				Cliente: <b> $respuestaCliente[nombre] </b> *** $respuestaVenta[nombre]
 			</td>
 			<td style=" background-color:white; width:70px; text-align:center; color:red">
-			<b> Venta N° $valorVenta</b> 
+			<b> Venta N° $respuestaVenta[codigo]</b> 
 			</td>
 			<td style=" background-color:white; width:150px; text-align:right;">
 			Estado de la venta
@@ -340,7 +340,7 @@ if ($estado != 1) {
 				Cliente: <b> $respuestaCliente[nombre]  </b> *** $respuestaVenta[nombre]
 			</td>
 			<td style=" background-color:white; width:70px; text-align:right; color:red">
-			<b> Venta N° $valorVenta </b> 
+			<b> Venta N° $respuestaVenta[codigo] </b> 
 			</td>
 			<td style=" background-color:white; width:150px; text-align:right;">
 			Estado de la venta
@@ -374,7 +374,7 @@ $pdf->writeHTML($bloque2, false, false, false, false, '');
 				Cliente: <b> $respuestaCliente[nombre] </b> *** $respuestaVenta[nombre]
 			</td>
 			<td style=" background-color:white; width:70px; text-align:center; color:red">
-			<b> Venta N° $valorVenta</b> 
+			<b> Venta N° $respuestaVenta[codigo]</b> 
 			</td>
 			<td style=" background-color:white; width:150px; text-align:right;">
 			Estado de la venta

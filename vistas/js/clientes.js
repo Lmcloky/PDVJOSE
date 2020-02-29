@@ -57,3 +57,12 @@ $(".tablas").on("click", ".btnEliminarCliente", function(){
   })
 
 })
+
+
+$(".tablas").on("click", ".btnImprimirEstado", function(){
+
+  var codigoCliente = $(this).attr("codigoCliente");
+
+  window.open("extensiones/tcpdf/pdf/estado.php?codigo="+codigoCliente, "_blank");
+
+})

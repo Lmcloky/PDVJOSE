@@ -924,3 +924,56 @@ $(".daterangepicker.opensleft .ranges li").on("click", function(){
 
 })
 
+$(document).on("click", ".btnVisto", function(){
+
+	var idVenta = $(this).attr("idVenta");
+	var estadoVenta = $(this).attr("estadoVenta");
+
+	var datos = new FormData();
+	datos.append("activarId", idVenta);
+	datos.append("activarVenta", estadoVenta);
+
+	$.ajax({
+
+		url:"ajax/ventas.ajax.php",
+		method: "POST",
+		data: datos,
+		cache: false,
+		contentType:false,
+		processData:false,
+		success: function(respuesta){
+
+				if(window.matchMedia("(max-width:767px)").matches){
+
+	      		 swal({
+			      title: "La venta ha sido actualizada",
+			      type: "success",
+			      confirmButtonText: "¡Cerrar!"
+			    }).then(function(result) {
+			        if (result.value) {
+
+			        	window.location = "ventas";
+
+			        }
+
+
+				})
+
+	      	}
+
+		}
+	})
+	if (estadoVenta == 0){
+
+		$(this).removeClass('btn-primary');
+		$(this).addClass('btn-danger');
+		$(this).html('Pendiente');
+		$(this).attr('estadoVenta',1)
+	}else{
+		$(this).addClass('btn-primary');
+		$(this).removeClass('btn-danger');
+		$(this).html('Visto');
+		$(this).attr('estadoVenta',0)
+	}
+
+})

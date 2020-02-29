@@ -31,6 +31,31 @@ class ModeloVentas{
 		$stmt = null;
 		
 	}
+
+		static public function mdlMostrarVentasCliente($tabla, $item, $valor){
+
+		if ($item != null) {
+			
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item and ver='0' ORDER BY id ASC");
+				$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}else{
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item and ver='0' ORDER BY id ASC");
+			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}
+
+		$stmt -> close();
+		$stmt = null;
+		
+	}
+
 		static public function mdlMostrarVentasPendientes($tabla, $item, $valor){
 
 		if ($item != null) {
@@ -215,4 +240,27 @@ class ModeloVentas{
 		$stmt = null;
 
 	}
+
+			/*=============================================
+		=            Actualizar Usuarios           =
+		=============================================*/
+
+		static public function mdlActualizarVenta($tabla, $item1, $valor1, $item2, $valor2){
+
+			$stmt = Conexion::conectar()->prepare("update $tabla set $item1 = :$item1, fecha=fecha where $item2 = :$item2");
+
+			$stmt -> bindParam(":".$item1, $valor1, PDO::PARAM_STR);
+			$stmt -> bindParam(":".$item2, $valor2, PDO::PARAM_STR);
+
+			if ($stmt -> execute()) {
+				return "ok";
+			}else{
+				return "error";
+			}
+
+			$stmt -> close();
+			$stmt = null;
+
+		}
+
 }

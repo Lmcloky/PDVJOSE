@@ -20,6 +20,16 @@ class ControladorVentas{
 
 		return $respuesta;
 	}
+
+	static public function ctrMostrarVentasCliente($item, $valor){
+
+		$tabla = "ventas";
+
+		$respuesta = ModeloVentas::mdlMostrarVentasCliente($tabla, $item, $valor);
+
+		return $respuesta;
+	}
+
 	static public function ctrMostrarVentasPendientes($item, $valor){
 
 		$tabla = "ventas";

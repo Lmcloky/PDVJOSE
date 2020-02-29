@@ -42,13 +42,14 @@
               <thead>
                 <tr>
                   <th style="width: 10px;">#</th>
-                  <th >Código Factura</th>
+                  <th style="width: 25px;">Código Factura</th>
                   <th >Cliente</th>
                   <th >Vendedor</th>
                   <th >Forma de pago</th>
                   <th >Total</th>
                   <th >Total Pagado</th>
                   <th >Estado</th>
+                  <th >Visto</th>
                   <th >Fecha</th>
                   <th >Acciones</th>
 
@@ -105,7 +106,13 @@
                                 echo '<td> <button class="btn btn-success btn-xs" estado="0"> Pagado </button> </td>';
                               }else{
                                 echo '<td> <button class="btn btn-danger btn-xs" estado="1"> Adeudo </button> </td>';
-                              };
+                              }
+
+                              if ($value["ver"] != 0) {
+		                          echo '<td> <button class="btn btn-primary btn-xs btnVisto" idVenta="'.$value["id"].'" estadoVenta="0"> Visto </button> </td>';
+		                        }else{
+		                          echo '<td> <button class="btn btn-danger btn-xs btnVisto" idVenta="'.$value["id"].'" estadoVenta="1"> Pendiente </button> </td>';
+		                        };
 
                             echo '<td>'.$value["fecha"].'</td>
 
@@ -113,7 +120,7 @@
 
                               <div class="btn-group">
                                   
-                                <button class="btn btn-info btnImprimirFactura" codigoVenta="'.$value["codigo"].'">
+                                <button class="btn btn-info btnImprimirFactura" codigoVenta="'.$value["id"].'">
                                 <i class="fa fa-print"></i>
                                 </button>';
 

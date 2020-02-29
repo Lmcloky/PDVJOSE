@@ -135,6 +135,16 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 
 		}
 
+		static public function ctrMostrarPagosClientes($item, $valor){
+
+
+			$tabla ="pagos";
+			$respuesta = ModeloPagos::MdlMostrarPagosClientes($tabla, $item, $valor);
+
+			return $respuesta;
+
+		}
+
 		static public function ctrMostrarPagosHoy($item, $valor){
 
 
