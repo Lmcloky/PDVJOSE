@@ -163,28 +163,32 @@ if($_SESSION["perfil"] == "Especial" || $_SESSION["perfil"] == "Vendedor"){
                         $valor = $value["id"];
                         $orden = "id";
 
-                        $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor, $orden);;
+                        $respuesta = ControladorProductos::ctrMostrarProductos($item, $valor, $orden);
 
                         $stockAntiguo = $respuesta["stock"] + $value["cantidad"];
 
                         
                         echo 
                         '<div class="row" style="padding:5px 15px">            
-                          <div class="col-xs-6" style="padding-right:0px">              
+                          <div class="col-xs-5" style="padding-right:0px">              
                             <div class="input-group">                  
                               <span class="input-group-addon"><button type="button" class="btn btn-danger btn-xs quitarProducto" idProducto="'.$value["id"].'"><i class="fa fa-times"></i></button></span>
                               <input type="text" class="form-control nuevaDescripcionProducto" idProducto="'.$value["id"].'" name="agregarProducto" value="'.$value["descripcion"].'" readonly required>
                             </div>
                           </div>
 
-                          <div class="col-xs-3">                
+                          <div class="col-xs-2">                
                             <input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" step="any" value="'.$value["cantidad"].'" stock="'.$stockAntiguo.'" nuevoStock="'.$value["stock"].'" required>
+                          </div>
+
+                          <div class="col-xs-2">            
+                              <input type="number" class="form-control nuevoPrecioAgregado" name="nuevoPrecioAgregado" step="any" value="'.$value["precio"].'" precioReal="'.$value["precio"].'" required>
                           </div>
 
                           <div class="col-xs-3 ingresoPrecio" style="padding-left:0px">
                             <div class="input-group">
                               <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>                     
-                              <input type="text" class="form-control nuevoPrecioProducto" precioReal="'.$respuesta["precio_venta"].'" name="nuevoPrecioProducto" value="'.$value["total"].'" readonly required>     
+                              <input type="text" class="form-control nuevoPrecioProducto"  name="nuevoPrecioProducto" value="'.$value["total"].'" readonly required>     
                             </div>                 
                           </div>
                         </div>';

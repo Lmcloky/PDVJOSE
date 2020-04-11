@@ -14,16 +14,16 @@ require_once "../../../modelos/usuarios.modelo.php";
 require_once "../../../controladores/productos.controlador.php";
 require_once "../../../modelos/productos.modelo.php";
 
-class imprimirFactura{
+class imprimirFacturaVenta{
 
 public $codigo;
 
-public function traerImpresionFactura(){
+public function traerImpresionFacturaVenta(){
 
 
 //TRAEMOS LA INFORMACION DE LA VENTA
 
-$itemVenta = "id";
+$itemVenta = "codigo";
 $valorVenta = $this->codigo;
 
 $respuestaVenta = ControladorVentas::ctrMostrarVentas($itemVenta, $valorVenta);
@@ -141,6 +141,10 @@ if ($estado != 1) {
 
 		</tr>
 
+		<tr>		
+		<td style="border-bottom: .3px solid #666; background-color:white; width:530px"></td>
+		</tr>
+
 	</table>
 
 EOF;
@@ -169,6 +173,10 @@ $pdf->writeHTML($bloque2, false, false, false, false, '');
 				<b>PAGADA</b>
 			</td>
 
+		</tr>
+
+		<tr>		
+		<td style="border-bottom: .3px solid #666; background-color:white; width:530px"></td>
 		</tr>
 
 	</table>
@@ -213,7 +221,7 @@ $precioTotal = number_format($item["total"], 2);
 
 $bloque4 = <<<EOF
 
-	<table style="font-size:7px; padding:1px;">
+	<table style="font-size:7px; padding:2px 10px;">
 		<tr>
 			<td style=" color:#333; background-color:white; width:80px; text-align:center">
 				$item[cantidad]
@@ -241,7 +249,7 @@ $right_column = '';
 
 
 // write the second column
-$pdf->writeHTMLCell(1, '', 198, 122, $right_column, 1, 1, 1, true, 'J', true);
+$pdf->writeHTMLCell(1, '', 198, 120, $right_column, 1, 1, 1, true, 'J', true);
 /*=====   **************************************BLOQUE 5 *************************************  ======*/
 
 $bloque5 = <<<EOF
@@ -350,6 +358,10 @@ if ($estado != 1) {
 
 		</tr>
 
+		<tr>		
+		<td style="border-bottom: .3px solid #666; background-color:white; width:530px"></td>
+		</tr>
+
 	</table>
 
 EOF;
@@ -426,21 +438,21 @@ $precioTotal = number_format($item["total"], 2);
 
 $bloque4 = <<<EOF
 
-	<table style="font-size:7px; padding:1px;">
+	<table style="font-size:7px; padding:2px 10px;">
 		<tr>
-			<td style=" color:#333; background-color:white; width:80px; text-align:center">
+			<td style="border: .3px solid #666; color:#333; background-color:white; width:80px; text-align:center">
 				$item[cantidad]
 			</td>
 
-			<td style=" color:#333; background-color:white; width:260px; text-align:center">
+			<td style="border: .3px solid #666; color:#333; background-color:white; width:260px; text-align:center">
 				$item[descripcion]
 			</td>
 
-			<td style=" color:#333; background-color:white; width:95px; text-align:center">$ 
+			<td style="border: .3px solid #666; color:#333; background-color:white; width:95px; text-align:center">$ 
 				$item[precio]
 			</td>
 
-			<td style=" color:#333; background-color:white; width:95px; text-align:center">$ 
+			<td style="border: .3px solid #666; color:#333; background-color:white; width:95px; text-align:center">$ 
 				$precioTotal
 			</td>
 
@@ -492,9 +504,9 @@ $bloque13 = <<<EOF
 				DEBO Y PAGARE INCONDICIONALMENTEA LA ORDEN DE ____________________________________, LA CANTIDAD AMPARADA EN LA PRESENTE ORDEN DE ENTREGA, 
 				DE NO SER PAGADA A SU VENCIMIENTO CAUSARA INTERESES MORATORIO A RAZON DEL 5% MENSUAL SIN QUE POR ELLO SE CONSIDERE PRORROGADO EL PLAZO.
 			</td>
-			<td style="background-color:white; width:120px; text-align:center">
+			<td style="background-color:white; width:120px; text-align:left">
 				
-				<br><br>_____________________________________ <br> Nombre y Firma 
+				<br> <br> <br> Nombre y Firma_________________________
 			</td>
 		</tr>
 	</table>
@@ -568,8 +580,8 @@ $pdf->Output('factura.pdf');
 
 
 
-$factura = new imprimirFactura();
+$factura = new imprimirFacturaVenta();
 $factura -> codigo = $_GET["codigo"];
-$factura -> traerImpresionFactura();
+$factura -> traerImpresionFacturaVenta();
 
  ?>

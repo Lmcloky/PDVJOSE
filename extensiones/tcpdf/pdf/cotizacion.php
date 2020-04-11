@@ -187,7 +187,7 @@ $bloque4 = <<<EOF
 			</td>
 
 			<td style=" color:#333; background-color:white; width:100px; text-align:center">$ 
-				$valorUnitario
+				$item[precio]
 			</td>
 
 			<td style=" color:#333; background-color:white; width:100px; text-align:center">$ 

@@ -104,7 +104,7 @@ $(".tablaCotizaciones tbody").on("click", "button.agregarProducto", function(){
 
 			  '<!-- Descripción del producto -->'+
 	          
-	          '<div class="col-xs-6" style="padding-right:0px">'+
+	          '<div class="col-xs-5" style="padding-right:0px">'+
 	          
 	            '<div class="input-group">'+
 	              
@@ -118,9 +118,17 @@ $(".tablaCotizaciones tbody").on("click", "button.agregarProducto", function(){
 
 	          '<!-- Cantidad del producto -->'+
 
-	          '<div class="col-xs-3">'+
+	          '<div class="col-xs-2">'+
 	            
 	             '<input type="number" class="form-control nuevaCantidadProducto" name="nuevaCantidadProducto" step="any" value="1" stock="'+stock+'" nuevoStock="'+Number(stock-1)+'" required>'+
+
+	          '</div>' +
+
+	          '<!-- Cantidad del producto -->'+
+
+	          '<div class="col-xs-2">'+
+	            
+	             '<input type="number" class="form-control nuevoPrecioAgregado" name="nuevoPrecioAgregado" step="any" value="'+precio+'" precioReal="'+precio+'" nuevoPrecio="'+Number(precio)+'" required>'+
 
 	          '</div>' +
 
@@ -132,7 +140,7 @@ $(".tablaCotizaciones tbody").on("click", "button.agregarProducto", function(){
 
 	              '<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
 	                 
-	              '<input type="text" class="form-control nuevoPrecioProducto" precioReal="'+precio+'" name="nuevoPrecioProducto" value="'+precio+'" readonly required>'+
+	              '<input type="text" class="form-control nuevoPrecioProducto" name="nuevoPrecioProducto" value="'+precio+'" readonly required>'+
 	 
 	            '</div>'+
 	             
@@ -402,11 +410,14 @@ $(".formularioCotizacion").on("change", "select.nuevaDescripcionProducto", funct
 MODIFICAR LA CANTIDAD
 =============================================*/
 
-$(".formularioCotizacion").on("change", "input.nuevaCantidadProducto", function(){
+
+$(".formularioCotizacion").on("change", "input.nuevoPrecioAgregado", function(){
 
 	var precio = $(this).parent().parent().children(".ingresoPrecio").children().children(".nuevoPrecioProducto");
+	var precio1 = $(this).parent().parent().children().children(".nuevaCantidadProducto");
 
-	var precioFinal = $(this).val() * precio.attr("precioReal");
+	var precioFinal = $(this).val() * precio1.val();
+	 
 	
 	precio.val(precioFinal);
 
@@ -416,9 +427,9 @@ $(".formularioCotizacion").on("change", "input.nuevaCantidadProducto", function(
 
 	// if(Number($(this).val()) > Number($(this).attr("stock"))){
 
-	// 	/*=============================================
-	// 	SI LA CANTIDAD ES SUPERIOR AL STOCK REGRESAR VALORES INICIALES
-	// 	=============================================*/
+	// 	// =============================================
+	// 	// SI LA CANTIDAD ES SUPERIOR AL STOCK REGRESAR VALORES INICIALES
+	// 	// =============================================
 
 	// 	$(this).val(1);
 
@@ -426,7 +437,7 @@ $(".formularioCotizacion").on("change", "input.nuevaCantidadProducto", function(
 
 	// 	precio.val(precioFinal);
 
-	// 	csumarTotalPrecios();
+	// 	sumarTotalPrecios();
 
 	// 	swal({
 	//       title: "La cantidad supera el Stock",
@@ -450,6 +461,58 @@ $(".formularioCotizacion").on("change", "input.nuevaCantidadProducto", function(
     // AGRUPAR PRODUCTOS EN FORMATO JSON
 
     clistarProductos()
+
+})
+
+$(".formularioCotizacion").on("change", "input.nuevaCantidadProducto", function(){
+
+	var precio = $(this).parent().parent().children(".ingresoPrecio").children().children(".nuevoPrecioProducto");
+	var precio1 = $(this).parent().parent().children().children(".nuevoPrecioAgregado");
+
+	var precioFinal = $(this).val() * precio1.val();
+	
+	precio.val(precioFinal);
+
+	var nuevoStock = Number($(this).attr("stock")) - $(this).val();
+
+	$(this).attr("nuevoStock", nuevoStock);
+
+	// if(Number($(this).val()) > Number($(this).attr("stock"))){
+
+	// 	/*=============================================
+	// 	SI LA CANTIDAD ES SUPERIOR AL STOCK REGRESAR VALORES INICIALES
+	// 	=============================================*/
+
+	// 	$(this).val(1);
+
+	// 	var precioFinal = $(this).val() * precio.attr("precioReal");
+
+	// 	precio.val(precioFinal);
+
+	// 	sumarTotalPrecios();
+
+	// 	swal({
+	//       title: "La cantidad supera el Stock",
+	//       text: "¡Sólo hay "+$(this).attr("stock")+" unidades!",
+	//       type: "error",
+	//       confirmButtonText: "¡Cerrar!"
+	//     });
+
+	//     return;
+
+	// }
+
+	// SUMAR TOTAL DE PRECIOS
+
+	csumarTotalPrecios()
+
+	// AGREGAR IMPUESTO
+	        
+    cagregarImpuesto()
+
+    // AGRUPAR PRODUCTOS EN FORMATO JSON
+
+   clistarProductos()
 
 })
 
@@ -525,27 +588,29 @@ LISTAR TODOS LOS PRODUCTOS
 
 function clistarProductos(){
 
-	var clistaProductos = [];
+	var listaProductos = [];
 
 	var descripcion = $(".nuevaDescripcionProducto");
 
 	var cantidad = $(".nuevaCantidadProducto");
 
+	var precio1 = $(".nuevoPrecioAgregado");
+
 	var precio = $(".nuevoPrecioProducto");
 
 	for(var i = 0; i < descripcion.length; i++){
 
-		clistaProductos.push({ "id" : $(descripcion[i]).attr("idProducto"), 
+		listaProductos.push({ "id" : $(descripcion[i]).attr("idProducto"), 
 							  "descripcion" : $(descripcion[i]).val(),
 							  "cantidad" : $(cantidad[i]).val(),
 							  "stock" : $(cantidad[i]).attr("nuevoStock"),
-							  "precio" : $(precio[i]).attr("precioReal"),
+							  "precio" : $(precio1[i]).val(),
 							  "total" : $(precio[i]).val()})
 
 	}
 
 
-	$("#clistaProductos").val(JSON.stringify(clistaProductos)); 
+	$("#clistaProductos").val(JSON.stringify(listaProductos)); 
 
 }
 
@@ -560,7 +625,7 @@ $(".tablas").on("click", ".btnEditarCotizacion", function(){
 	window.location = "index.php?ruta=editar-cotizacion&idCotizacion="+idCotizacion;
 
 })
-
+                                                                                                                 
 /*=============================================
 FUNCIÓN PARA DESACTIVAR LOS BOTONES AGREGAR CUANDO EL PRODUCTO YA HABÍA SIDO SELECCIONADO EN LA CARPETA
 =============================================*/
@@ -643,7 +708,14 @@ $(".tablas").on("click", ".btnImprimirCotizacion", function(){
 
 })
 
+$(".tablas").on("click", ".btnImprimirReporte", function(){
 
+  	var codigo = $(this).attr("codigo");
+       
+    window.open("vistas/modulos/reporte-cotizacion.php?cotizacion=cotizacion&codigo="+codigo, "_blank"); 
+    // window.location = "index.php?ruta=reporte-cotizacion&codigo="+codigo;
+
+})
 
 /*=============================================
 RANGO DE FECHAS

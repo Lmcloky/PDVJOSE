@@ -108,7 +108,6 @@ class ControladorCotizaciones{
 
 		if (isset($_POST["editarCotizacion"])) {
 
-
 			/*================================================================================================================================
 		    	               FORMATEAR LA TABLA                      AUMENTAR LAS VENTAS DE LOS PRODUCTOS
 			================================================================================================================================*/
@@ -281,11 +280,9 @@ class ControladorCotizaciones{
 		}
 
 	}
-
 	/*=============================================
 	RANGO FECHAS
 	=============================================*/	
-
 	static public function ctrRangoFechasCotizaciones($fechaInicial, $fechaFinal){
 
 		$tabla = "cotizaciones";
@@ -295,36 +292,47 @@ class ControladorCotizaciones{
 		return $respuesta;
 		
 	}
-
-
 	/*=============================================
 	Descargar excel
 	=============================================*/	
+	// public $codigo;
 
-	static public function ctrDescargarReporte(){
+	public function ctrImprimirReporteCotizacion(){
 
-		if (isset($_GET["reporte"])) {
-			
-			$tabla = "ventas";
+		if (isset($_GET["cotizacion"])) {
 
-			if(isset($_GET["fechaInicial"]) && isset($_GET["fechaFinal"])){
+			$tabla = "cotizaciones";
 
-				$ventas = ModeloVentas::mdlRangoFechasVentas($tabla, $_GET["fechaInicial"], $_GET["fechaFinal"]);
+			$item = "codigo";
+			$valor = $_GET["codigo"];
 
-			}else{
+			$cotizaciones = ModeloCotizaciones::mdlMostrarCotizaciones($tabla, $item, $valor);
 
-				$item = null;
-				$valor = null;
+			$fecha = substr($cotizaciones["fecha"],0);
+			$productos = json_decode($cotizaciones["productos"], true);
+			$neto = number_format($cotizaciones["neto"],2);
+			$descuento = number_format($cotizaciones["descuento"],2);
+			$total = number_format($cotizaciones["total"],2);
 
-				$ventas = ModeloVentas::mdlMostrarVentas($tabla, $item, $valor);
 
-			}
+			//TRAEMOS LA INFORMACIÓN DEL CLIENTE
 
+			$itemCliente = "id";
+			$valorCliente = $cotizaciones["id_cliente"];
+
+			$respuestaCliente = ControladorClientes::ctrMostrarClientes($itemCliente, $valorCliente);
+
+			//TRAEMOS LA INFORMACIÓN DEL VENDEDOR
+
+			$itemVendedor = "id";
+			$valorVendedor = $cotizaciones["id_vendedor"];
+
+			$respuestaVendedor = ControladorUsuarios::ctrMostrarUsuarios($itemVendedor, $valorVendedor);
 			/*=============================================
 			Crear archivo excel
 			=============================================*/
 
-			$Name = $_GET["reporte"].'.xls';
+			$Name = $cotizaciones["codigo"].'.xls';
 
 			header('Expires: 0');
 			header('Cache-control: private');
@@ -338,59 +346,91 @@ class ControladorCotizaciones{
 
 			echo utf8_decode("<table border='0'> 
 
+					<tr>
+						<td style='width:20px; height:20px;'></td>
+					</tr>
+
+
+					<tr>
+						<td></td>
+						<td style='font-weight:bold; width:80px; height:80px;'> <img src='http://localhost/PuntoDeVentaJose/vistas/img/plantilla/construrama.png' width='70' height='70'> <br><br></td> 
+						<td style='font-size:28px; text-align:right; width:420px;'>FERREMATERIALES LA CASCADA <td/>
+						<td style=' font-size:10px; font-weight:times; width:180px;'>Santa Maria Pipioltepec, entrada las Carmelitas, la cascada Valle de Bravo, Estado de México C.P. 51200 Tel: 01 726 110 12 14- Cel: 7221837283</td>
+					</tr>
+
+					<tr>
+						<td></td>
+						<td>Cliente: </td>
+						<td>".$respuestaCliente['nombre']."</td>
+						<td style='text-align:right;'>Cotización:</td>
+						<td style='text-align:left;'>".$cotizaciones['codigo']."</td>
+					<tr/>
+
+
 					<tr> 
-					<td style='font-weight:bold; border:1px solid #eee;'>CÓDIGO</td> 
-					<td style='font-weight:bold; border:1px solid #eee;'>CLIENTE</td>
-					<td style='font-weight:bold; border:1px solid #eee;'>VENDEDOR</td>
-					<td style='font-weight:bold; border:1px solid #eee;'>CANTIDAD</td>
-					<td style='font-weight:bold; border:1px solid #eee;'>PRODUCTOS</td>
-					<td style='font-weight:bold; border:1px solid #eee;'>IMPUESTO</td>
-					<td style='font-weight:bold; border:1px solid #eee;'>NETO</td>		
-					<td style='font-weight:bold; border:1px solid #eee;'>TOTAL</td>		
-					<td style='font-weight:bold; border:1px solid #eee;'>METODO DE PAGO</td	
-					<td style='font-weight:bold; border:1px solid #eee;'>FECHA</td>		
+					<td> </td>
+					<td style='font-weight:bold; border:1px solid #eee; width:80px;'>CANTIDAD</td>
+					<td style='font-weight:bold; text-align:center; border:1px solid #eee; width:320px;'>PRODUCTO</td>
+					<td style='font-weight:bold; border:1px solid #eee; width:180px;'>VALOR UNITARIO</td>
+					<td style='font-weight:bold; border:1px solid #eee; width:180px;'>VALOR TOTAL</td>
 					</tr>");
 
-			foreach ($ventas as $row => $item){
+				foreach ($productos as $key => $item) {
 
-				$cliente = ControladorClientes::ctrMostrarClientes("id", $item["id_cliente"]);
-				$vendedor = ControladorUsuarios::ctrMostrarUsuarios("id", $item["id_vendedor"]);
+				$itemProducto = "descripcion";
+				$valorProducto = $item["descripcion"];
+				$orden = null;
 
-			 echo utf8_decode("<tr>
-			 			<td style='border:1px solid #eee;'>".$item["codigo"]."</td> 
-			 			<td style='border:1px solid #eee;'>".$cliente["nombre"]."</td>
-			 			<td style='border:1px solid #eee;'>".$vendedor["nombre"]."</td>
-			 			<td style='border:1px solid #eee;'>");
+				$respuestaProducto = ControladorProductos::ctrMostrarProductos($itemProducto, $valorProducto, $orden);
 
-			 	$productos =  json_decode($item["productos"], true);
+				$valorUnitario = number_format($respuestaProducto["precio_venta"], 2);
 
-			 	foreach ($productos as $key => $valueProductos) {
+				$precioTotal = number_format($item["total"], 2);
 			 			
-			 			echo utf8_decode($valueProductos["cantidad"]."<br>");
+			 			echo utf8_decode("<tr> <td></td> 
+
+			 		<td style='border:1px solid #eee; height:35px'>".$item["cantidad"]."<br>
+			 		<td style='border:1px solid #eee; text-align:center;'>".$item["descripcion"]."<br>
+			 		<td style='border:1px solid #eee; text-align:center;'>".$item["precio"]."<br>
+			 		<td style='border:1px solid #eee; text-align:center;'>".$precioTotal."<br>
+
+			 		</td></tr>");
 			 		}
 
-			 	echo utf8_decode("</td><td style='border:1px solid #eee;'>");	
+			 	// echo utf8_decode();	
 
-		 		foreach ($productos as $key => $valueProductos) {
+		 		// foreach ($productos as $key => $valueProductos) {
+
 			 			
-		 			echo utf8_decode($valueProductos["descripcion"]."<br>");
+		 		// 	echo utf8_decode($valueProductos["descripcion"]."<br>");
 		 		
-		 		}
+		 		// }
 
-		 		echo utf8_decode("</td>
-					<td style='border:1px solid #eee;'>$ ".number_format($item["impuesto"],2)."</td>
-					<td style='border:1px solid #eee;'>$ ".number_format($item["neto"],2)."</td>	
-					<td style='border:1px solid #eee;'>$ ".number_format($item["total"],2)."</td>
-					<td style='border:1px solid #eee;'>".$item["metodo_pago"]."</td>
-					<td style='border:1px solid #eee;'>".substr($item["fecha"],0,10)."</td>		
+		 		echo utf8_decode("
+		 			<tr> <td></td> 
+
+			 		<td style='border:1px solid #eee; height:35px'><br>
+			 		<td style='border:1px solid #eee; text-align:center;'><br>
+			 		<td style='border:1px solid #eee; text-align:center;'><br>
+			 		<td style='border:1px solid #eee; text-align:center;'><br>
+
+			 		</td></tr>
+		 			<tr> 
+		 				<td></td> 
+		 			</tr>
+		 			<tr> 
+		 				<td></td> 
+		 			</tr>
+		 			<tr>
+		 			<td> </td><td> </td><td> </td>
+					<td style='text-align:right;'> Total: </td>	
+					<td style='text-align:center;'>$ ".number_format($cotizaciones["total"],2)."</td>
 		 			</tr>");
-
-
-			}
 
 
 			echo "</table>";
 		}
+
 	}
 
 }

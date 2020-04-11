@@ -38,7 +38,14 @@ class ControladorVentas{
 
 		return $respuesta;
 	}
-	
+	static public function ctrMostrarVentasPendientesTotal($item, $valor){
+
+		$tabla = "ventas";
+
+		$respuesta = ModeloVentas::mdlMostrarVentasPendientesTotal($tabla, $item, $valor);
+
+		return $respuesta;
+	}
 	/*==============================================================================
 	=                               MOSTRAR LAS VENTAS                             =
 	==============================================================================*/
@@ -122,6 +129,18 @@ class ControladorVentas{
 
 			if($respuesta == "ok"){
 
+				$item = null;
+                  $valor = null;
+                  $orden = "id";
+
+                  $ventas = ControladorVentas::ctrMostrarVentas($item, $valor, $orden);
+
+                  
+                    foreach ($ventas as $key => $value) {                              
+                    }
+                    $codigo = $value["id"];
+                    
+
 
 				// $impresora = "epsontm";
 
@@ -186,7 +205,6 @@ class ControladorVentas{
 
 				$printer -> text("Productos    Precio     Cantidad   Total"."\n");
 
-
 				foreach ($listaProductos as $key => $value) {
 
 					$printer->setJustification(Printer::JUSTIFY_LEFT);
@@ -202,12 +220,17 @@ class ControladorVentas{
 				$printer -> feed(1); //Alimentamos el papel 1 vez*/			
 				
 				$printer->text("NETO: $ ".number_format($_POST["nuevoPrecioNeto"],2)."\n"); //ahora va el neto
-
-				$printer->text("IMPUESTO: Ya Agregado "."\n"); //ahora va el impuesto
+				
+				$printer->text("TOTAL: $ ".number_format($_POST["totalVenta"],2)."\n"); //ahora va el total
 
 				$printer->text("--------\n");
 
-				$printer->text("TOTAL: $ ".number_format($_POST["totalVenta"],2)."\n"); //ahora va el total
+				if ($listaMetodoPago = "Efectivo") {
+					
+					$printer->text("--------\n");
+					$printer->text("Recibi: $ ".number_format($_POST["nuevoValorEfectivo"],2)."\n"); //ahora va el total
+					$printer->text("Cambio: $ ".number_format($_POST["nuevoCambioEfectivo"],2)."\n"); //ahora va el total
+				}
 
 				$printer -> feed(1); //Alimentamos el papel 1 vez*/	
 
@@ -221,7 +244,6 @@ class ControladorVentas{
 
 				$printer -> close();
 
-
 				echo'<script>
 
 				localStorage.removeItem("rango");
@@ -234,8 +256,8 @@ class ControladorVentas{
 					  }).then((result) => {
 								if (result.value) {
 
-								window.open("extensiones/tcpdf/pdf/factura.php?codigo="+'.$_POST["nuevaVenta"].', "_blank");
-								window.location = "ventas";
+								window.open("extensiones/tcpdf/pdf/factura.php?codigo="+'.$codigo.', "_blank");
+								window.location = "ventashoy";
 
 								}
 							})
@@ -337,7 +359,7 @@ class ControladorVentas{
 					  }).then((result) => {
 								if (result.value) {
 
-								window.location = "ventas";
+								window.location = "ventashoy";
 
 								}
 							})
@@ -358,8 +380,8 @@ class ControladorVentas{
 					  }).then((result) => {
 								if (result.value) {
 
-								window.open("extensiones/tcpdf/pdf/factura.php?codigo="+'.$_POST["nuevaVenta"].', "_blank");
-								window.location = "ventas";
+								window.open("extensiones/tcpdf/pdf/factura.php?codigo="+'.$codigo.', "_blank");
+								window.location = "ventashoy";
 
 								}
 							})
@@ -381,7 +403,7 @@ class ControladorVentas{
 					  }).then((result) => {
 								if (result.value) {
 
-								window.location = "ventas";
+								window.location = "ventashoy";
 
 								}
 							})
@@ -647,7 +669,7 @@ class ControladorVentas{
 					  }).then((result) => {
 								if (result.value) {
 
-								window.open("extensiones/tcpdf/pdf/factura.php?codigo="+'.$_POST["editarVenta"].', "_blank");
+								window.open("extensiones/tcpdf/pdf/ventaFactura.php?codigo="+'.$_POST["editarVenta"].', "_blank");
 								window.location = "ventas";
 
 								}
@@ -767,7 +789,7 @@ class ControladorVentas{
 					  }).then((result) => {
 								if (result.value) {
 
-								window.open("extensiones/tcpdf/pdf/factura.php?codigo="+'.$_POST["editarVenta"].', "_blank");
+								window.open("extensiones/tcpdf/pdf/ventaFactura.php?codigo="+'.$_POST["editarVenta"].', "_blank");
 								window.location = "ventas";
 
 								}
@@ -934,7 +956,6 @@ class ControladorVentas{
 					  }).then((result) => {
 								if (result.value) {
 
-								window.open("extensiones/tcpdf/pdf/factura.php?codigo="+codigoVenta, "_blank");
 								window.location = "ventas";
 
 								}

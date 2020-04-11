@@ -26,7 +26,7 @@ public function traerImpresionFactura(){
 $itemVenta = null;
 $valorVenta = null;
 
-$respuestaVenta = ControladorVentas::ctrMostrarVentasPendientes($itemVenta, $valorVenta);
+$respuestaVenta = ControladorVentas::ctrMostrarVentasPendientesTotal($itemVenta, $valorVenta);
 
 date_default_timezone_set('America/Mexico_City');
 
@@ -147,26 +147,14 @@ $bloque3 = <<<EOF
 
 	<table style="font-size:9px; padding:2px 10px;">
 		<tr>
-			<td style="border: .8px solid #666; color:#333; background-color:white; width:66px; text-align:center">
-				Codigo
-			</td>
 
-			<td style="border: .8px solid #666; color:#333; background-color:white; width:122px; text-align:left">
+			<td style="border: .8px solid #666; color:#333; background-color:white; width:150px; text-align:left">
 				Nombre Del Cliente
 			</td>
-			<td style="border: .8px solid #666; color:#333; background-color:white; width:122px; text-align:left">
-				Nombre Opcional
-			</td>
-				
-			<td style="border: .8px solid #666; color:#333; background-color:white; width:80px; text-align:left">
-			Total A Pagar
-			</td>
-			<td style="border: .8px solid #666; color:#333; background-color:white; width:80px; text-align:center">
-				Abonado
-			</td>
 
-			<td style="border: .8px solid #666; color:#333; background-color:white; width:80px; text-align:center">
-				Resta
+				
+			<td style="border: .8px solid #666; color:#333; background-color:white; width:150px; text-align:left">
+			Total a Pagar
 			</td>
 
 		</tr>
@@ -178,41 +166,21 @@ $pdf->writeHTML($bloque3, false, false, false, false, '');
 /*=====   **************************************BLOQUE 4 *************************************  ======*/
 foreach ($respuestaVenta as $key => $value) {
 
-$itemCliente = "id";
-$valorCliente = $value["id_cliente"];
-
-$respuestaCliente = ControladorClientes::ctrMostrarClientes($itemCliente, $valorCliente);
-
-$resta = $value["total"]-$value["total_pagado"];
-
 $bloque4 = <<<EOF
 
 	<table style="font-size:8px; padding:5px;">
 		<tr>
-			<td style="border: .5px solid #666; color:#333; background-color:white; width:66px; text-align:center">
-				$value[codigo]
-			</td>
 
-			<td style="border: .5px solid #666; color:#333; background-color:white; width:122px; text-align:left">
-				$respuestaCliente[nombre]
-			</td>
-			<td style="border: .5px solid #666; color:#333; background-color:white; width:122px; text-align:left">
+			<td style="border: .5px solid #666; color:#333; background-color:white; width:150px; text-align:left"> 
 				$value[nombre]
 			</td>
-				
-			<td style="border: .5px solid #666; color:#333; background-color:white; width:80px; text-align:left">$ 
-				$value[total]
+
+			<td style="border: .5px solid #666; color:#333; background-color:white; width:150px; text-align:left">$ 
+				$value[resta]
 			</td>
 
-			<td style="border: .5px solid #666; color:#333; background-color:white; width:80px; text-align:center">$
-				$value[total_pagado]
-			</td>
-			<td style="border: .5px solid #666; color:#333; background-color:white; width:80px; text-align:left">$ 
-				$resta
-			</td>
 		</tr>
 	</table>
-
 EOF;
 $pdf->writeHTML($bloque4, false, false, false, false, '');
 }

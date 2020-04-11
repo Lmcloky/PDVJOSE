@@ -79,6 +79,29 @@ class ModeloVentas{
 		$stmt = null;
 		
 	}
+			static public function mdlMostrarVentasPendientesTotal($tabla, $item, $valor){
+
+		if ($item != null) {
+			
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item where estado=0 group by id_cliente");
+			$stmt -> bindParam(":".$item, $valor, PDO::PARAM_STR);
+			$stmt -> execute();
+
+			return $stmt -> fetch();
+
+		}else{
+
+			$stmt = Conexion::conectar()->prepare("select clientes.nombre as nombre, sum(total-total_pagado) as resta from ventas,clientes WHERE ventas.id_cliente=clientes.id GROUP by ventas.id_cliente");
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}
+
+		$stmt -> close();
+		$stmt = null;
+		
+	}
 
 		static public function mdlIngresarVenta($tabla, $datos){
 

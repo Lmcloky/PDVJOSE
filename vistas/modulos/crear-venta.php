@@ -64,7 +64,7 @@
                     <div class="input-group">
                       <span class="input-group-addon"><i class="fa fa-users"></i> </span>
                       <select class="form-control select2"  name="seleccionarCliente" id="seleccionarCliente" required>
-                        <option value="">Seleccionar Cliente</option>
+                        
                         <?php
                           $item = null;
                           $valor = null;

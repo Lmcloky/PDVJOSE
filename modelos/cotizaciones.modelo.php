@@ -169,4 +169,28 @@ class ModeloCotizaciones{
 		}
 	}
 
+	static public function mdlImprimirCotizacion($tabla, $codigo){
+
+		if ($item != null) {
+			
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $codigo = :$codigo");
+			$stmt -> bindParam(":".$item, PDO::PARAM_STR);
+			$stmt -> execute();
+
+			return $stmt -> fetch();
+
+		}else{
+
+			$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER BY id ASC");
+			$stmt -> execute();
+
+			return $stmt -> fetchAll();
+
+		}
+
+		$stmt -> close();
+		$stmt = null;
+		
+	}
+
 }

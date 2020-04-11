@@ -146,6 +146,17 @@
 			</li>';
 			}
 
+			if($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Vendedor" || $_SESSION["perfil"] == "Especial"){
+
+		echo '<li>
+				<a href="ventashoy">
+					<i class="fa fa-clock-o"></i>
+					<span>Ventas de Hoy</span>
+				</a> 
+			</li>';
+
+		}
+
 		?>
 
 		</ul>	

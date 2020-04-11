@@ -39,7 +39,7 @@
                   <th style="width: 120px;">Codigo de Venta</th>
                   <th>Metodo de Pago</th>
                   <th>Abono</th>
-                  <th>Resta</th>
+
                   <th>Fecha</th>
                   <th>Acciones</th>
 
@@ -63,11 +63,19 @@
                         <td>'.$value["codigo_venta"].'</td>
                         <td>'.$value["metodo_pago"].'</td>
                         <td>'.$value["abono"].'</td>
-                        <td>'.$value["resta"].'</td>
                         <td>'.$value["fecha"].'</td>
-                        <td>
-                            <button class="btn btn-danger btnEliminarPago" idPago="'.$value["id"].'"> <i class="fa fa-times"></i> </button>
-                            
+                        <td>';
+
+                                if($_SESSION["perfil"] == "Administrador"){
+
+                                echo '
+
+    
+                            <button class="btn btn-danger btnEliminarPago" idPago="'.$value["id"].'"> <i class="fa fa-times"></i> </button>';
+                              }
+
+                              echo '
+
                           </div>
 
                         </td>
@@ -162,7 +170,6 @@
                           <div class="input-group">
                             <span class="input-group-addon"><i class="fa fa-usd"></i></span> 
                             <select class="form-control select2 input-lg" style="width: 100%" id="metodoPago" name="metodoPago" required>
-                              <option value="">Seleccione método de pago</option>
                               <option value="Efectivo">Efectivo</option>
                               <option value="TC">Tarjeta de Crédito</option>
                               <option value="TD">Tarjeta De Débito</option>

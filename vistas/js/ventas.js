@@ -98,19 +98,6 @@ $(".tablaVentas tbody").on("click", "button.agregarProducto", function(){
           	EVITAR AGREGAR PRODUTO CUANDO EL STOCK ESTÁ EN CERO
           	=============================================*/
 
-          	if(stock == 0){
-
-      			swal({
-			      title: "No hay stock disponible",
-			      type: "error",
-			      confirmButtonText: "¡Cerrar!"
-			    });
-
-			    $("button[idProducto='"+idProducto+"']").addClass("btn-primary agregarProducto");
-
-			    return;
-
-          	}
 
           	$(".nuevoProducto").append(
 
@@ -437,30 +424,30 @@ $(".formularioVenta").on("change", "input.nuevoPrecioAgregado", function(){
 
 	$(this).attr("nuevoStock", nuevoStock);
 
-	if(Number($(this).val()) > Number($(this).attr("stock"))){
+	// if(Number($(this).val()) > Number($(this).attr("stock"))){
 
-		// =============================================
-		// SI LA CANTIDAD ES SUPERIOR AL STOCK REGRESAR VALORES INICIALES
-		// =============================================
+	// 	// =============================================
+	// 	// SI LA CANTIDAD ES SUPERIOR AL STOCK REGRESAR VALORES INICIALES
+	// 	// =============================================
 
-		$(this).val(1);
+	// 	$(this).val(1);
 
-		var precioFinal = $(this).val() * precio.attr("precioReal");
+	// 	var precioFinal = $(this).val() * precio.attr("precioReal");
 
-		precio.val(precioFinal);
+	// 	precio.val(precioFinal);
 
-		sumarTotalPrecios();
+	// 	sumarTotalPrecios();
 
-		swal({
-	      title: "La cantidad supera el Stock",
-	      text: "¡Sólo hay "+$(this).attr("stock")+" unidades!",
-	      type: "error",
-	      confirmButtonText: "¡Cerrar!"
-	    });
+	// 	swal({
+	//       title: "La cantidad supera el Stock",
+	//       text: "¡Sólo hay "+$(this).attr("stock")+" unidades!",
+	//       type: "error",
+	//       confirmButtonText: "¡Cerrar!"
+	//     });
 
-	    return;
+	//     return;
 
-	}
+	// }
 
 	// SUMAR TOTAL DE PRECIOS
 
@@ -489,30 +476,30 @@ $(".formularioVenta").on("change", "input.nuevaCantidadProducto", function(){
 
 	$(this).attr("nuevoStock", nuevoStock);
 
-	if(Number($(this).val()) > Number($(this).attr("stock"))){
+	// if(Number($(this).val()) > Number($(this).attr("stock"))){
 
-		/*=============================================
-		SI LA CANTIDAD ES SUPERIOR AL STOCK REGRESAR VALORES INICIALES
-		=============================================*/
+	// 	/*=============================================
+	// 	SI LA CANTIDAD ES SUPERIOR AL STOCK REGRESAR VALORES INICIALES
+	// 	=============================================*/
 
-		$(this).val(1);
+	// 	$(this).val(1);
 
-		var precioFinal = $(this).val() * precio.attr("precioReal");
+	// 	var precioFinal = $(this).val() * precio.attr("precioReal");
 
-		precio.val(precioFinal);
+	// 	precio.val(precioFinal);
 
-		sumarTotalPrecios();
+	// 	sumarTotalPrecios();
 
-		swal({
-	      title: "La cantidad supera el Stock",
-	      text: "¡Sólo hay "+$(this).attr("stock")+" unidades!",
-	      type: "error",
-	      confirmButtonText: "¡Cerrar!"
-	    });
+	// 	swal({
+	//       title: "La cantidad supera el Stock",
+	//       text: "¡Sólo hay "+$(this).attr("stock")+" unidades!",
+	//       type: "error",
+	//       confirmButtonText: "¡Cerrar!"
+	//     });
 
-	    return;
+	//     return;
 
-	}
+	// }
 
 	// SUMAR TOTAL DE PRECIOS
 
@@ -612,14 +599,14 @@ $("#nuevoMetodoPago").change(function(){
 			 '<div class="col-xs-4">'+ 
 			 	'<div class="input-group">'+ 
 			 		'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+ 
-			 		'<input type="text" class="form-control" id="nuevoValorEfectivo" placeholder="000000" required>'+
+			 		'<input type="text" class="form-control" id="nuevoValorEfectivo" name="nuevoValorEfectivo" placeholder="000000" required>'+
 			 	'</div>'+
 			 '</div>'+
 
 			 '<div class="col-xs-4" id="capturarCambioEfectivo" style="padding-left:0px">'+
 			 	'<div class="input-group">'+
 			 		'<span class="input-group-addon"><i class="ion ion-social-usd"></i></span>'+
-			 		'<input type="text" class="form-control" id="nuevoCambioEfectivo" placeholder="000000" readonly required>'+
+			 		'<input type="text" class="form-control" id="nuevoCambioEfectivo" name="nuevoCambioEfectivo" placeholder="000000" readonly required>'+
 			 	'</div>'+
 			 '</div>'
 

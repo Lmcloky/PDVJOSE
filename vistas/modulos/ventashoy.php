@@ -3,12 +3,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Administrar Cotizaciones
+        Administrar Ventas
         <small>Panel de control</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="inicio"><i class="fa fa-dashboard"></i>Inicio</a></li>
-        <li class="active">Administrar Cotizaciones</li>
+        <li class="active">Administrar Ventas</li>
       </ol>
     </section>
 
@@ -19,13 +19,13 @@
         <div class="box-header with-border">
           <!-- <h3 class="box-title">Title</h3> -->
           
-          <a href="crear-cotizacion">
+          <a href="crear-venta">
             <button class="btn btn-primary">            
-              Agregar Cotización            
+              Agregar Venta            
             </button>
           </a>
 
-         <!--  <button type="button" class="btn btn-default pull-right" id="daterange-btn3">
+          <button type="button" class="btn btn-default pull-right" id="daterange-btn">
             
               <span>
                 <i class="fa fa-calendar"></i> Rango de Fecha
@@ -33,7 +33,7 @@
 
               <i class="fa fa-caret-down"></i>
 
-          </button> -->
+          </button>
           
         </div>
         <div class="box-body">
@@ -42,11 +42,14 @@
               <thead>
                 <tr>
                   <th style="width: 10px;">#</th>
-                  <th >Código Cotización</th>
+                  <th style="width: 25px;">Código Factura</th>
                   <th >Cliente</th>
                   <th >Vendedor</th>
-                  <th >Neto</th>
+                  <th >Forma de pago</th>
                   <th >Total</th>
+                  <th >Total Pagado</th>
+                  <th >Estado</th>
+                  <th >Visto</th>
                   <th >Fecha</th>
                   <th >Acciones</th>
 
@@ -56,6 +59,10 @@
               <tbody>
 
                 <?php 
+                
+                date_default_timezone_set('America/Mexico_City');
+
+                $fecha = date('Y-m-d');
 
                     if (isset($_GET["fechaInicial"])) {
                       
@@ -64,12 +71,12 @@
 
                     }else{
 
-                      $fechaInicial = null;
+                      $fechaInicial = $fecha;
                       $fechaFinal = null;
 
                     }
 
-                    $respuesta = ControladorCotizaciones::ctrRangoFechasCotizaciones($fechaInicial, $fechaFinal);
+                    $respuesta = ControladorVentas::ctrRangoFechasVentas($fechaInicial, $fechaFinal);
 
                     foreach ($respuesta as $key => $value) {
            
@@ -93,33 +100,42 @@
 
                             echo '<td>'.$respuestaUsuario["nombre"].'</td>
 
-                            <td>$ '.number_format($value["neto"],2).'</td>
+                            <td>'.$value["metodo_pago"].'</td>
 
                             <td>$ '.number_format($value["total"],2).'</td>
 
-                            <td>'.$value["fecha"].'</td>
+                            <td>$ '.number_format($value["total_pagado"],2).'</td>';
+
+                              if ($value["estado"] != 0) {
+                                echo '<td> <button class="btn btn-success btn-xs" estado="0"> Pagado </button> </td>';
+                              }else{
+                                echo '<td> <button class="btn btn-danger btn-xs" estado="1"> Adeudo </button> </td>';
+                              }
+
+                              if ($value["ver"] != 0) {
+		                          echo '<td> <button class="btn btn-primary btn-xs btnVisto" idVenta="'.$value["id"].'" estadoVenta="0"> Visto </button> </td>';
+		                        }else{
+		                          echo '<td> <button class="btn btn-danger btn-xs btnVisto" idVenta="'.$value["id"].'" estadoVenta="1"> Pendiente </button> </td>';
+		                        };
+
+                            echo '<td>'.$value["fecha"].'</td>
 
                             <td>
 
                               <div class="btn-group">
-                                
-                                <a href="vistas/modulos/reporte-cotizacion.php?cotizacion=cotizacion&codigo='.$value["codigo"].'">
-                                <button class="btn btn-success">
-                                <i class="fa fa-file-excel-o"></i>
-                                </button>
-                                </a>
- 
-                                <button class="btn btn-info btnImprimirCotizacion" codigoCotizacion="'.$value["codigo"].'">
+                                  
+                                <button class="btn btn-info btnImprimirFactura" codigoVenta="'.$value["id"].'">
                                 <i class="fa fa-print"></i>
                                 </button>';
 
                                 if($_SESSION["perfil"] == "Administrador"){
 
-                                echo '
-                                <button class="btn btn-danger btnEliminarCotizacion" idCotizacion="'.$value["id"].'"><i class="fa fa-times"></i></button>';
+                                echo '<button class="btn btn-warning btnEditarVenta" idVenta="'.$value["id"].'"><i class="fa fa-pencil"></i></button> 
+
+                                <button class="btn btn-danger btnEliminarVenta" idVenta="'.$value["id"].'"><i class="fa fa-times"></i></button>';
                               }
 
-                              echo '</div>  
+                              echo '</div>
 
                             </td>
 
@@ -134,10 +150,8 @@
 
             <?php
 
-
-
-            $eliminarCotizacion = new ControladorCotizaciones();
-            $eliminarCotizacion -> ctrEliminarCotizacion();
+            $eliminarVenta = new ControladorVentas();
+            $eliminarVenta -> ctrEliminarVenta();
 
             ?>
           
